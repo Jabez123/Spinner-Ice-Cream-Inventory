@@ -23,17 +23,29 @@ Public Class Main
     End Sub
 
     Private Sub DisplayData(table As String)
-        cmd = con.CreateCommand()
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = "select * from " & table & ";"
-        cmd.ExecuteNonQuery()
-
-        Dim dt As New DataTable
-        Dim da As New SqlDataAdapter(cmd)
-        da.Fill(dt)
         If table = "inventory" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "select * from " & table & ";"
+            cmd.ExecuteNonQuery()
+
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+
             inventoryDataGridView.DataSource = dt
-        ElseIf table = "branch" Then
+        End If
+
+        If table = "branch" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "select * from " & table & ";"
+            cmd.ExecuteNonQuery()
+
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+
             branchDataGridView.DataSource = dt
         End If
 
@@ -129,6 +141,25 @@ Public Class Main
         End If
     End Sub
 
+    Private Sub SearchData(table As String, searchTextBox As String)
+        If table = "inventory" Then
+
+        End If
+
+        If table = "branch" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "select * from " & table & " where name LIKE '%" & searchTextBox & "%';"
+            cmd.ExecuteNonQuery()
+
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+
+            branchDataGridView.DataSource = dt
+        End If
+    End Sub
+
 
     Private Sub ClearValues(panel As String)
         If panel = "inventory" Then
@@ -212,5 +243,9 @@ Public Class Main
 
     Private Sub DeleteBranchTextBox_Click(sender As Object, e As EventArgs) Handles DeleteBranchTextBox.Click
         DeleteData("branch", selectedBranchId)
+    End Sub
+
+    Private Sub BranchSearchButton_Click(sender As Object, e As EventArgs) Handles branchSearchButton.Click
+        SearchData("branch", branchSearchTextBox.Text)
     End Sub
 End Class

@@ -24,10 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.inventoryButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.DoubleBitmapControl1 = New BunifuAnimatorNS.DoubleBitmapControl()
         Me.branchButton = New Bunifu.Framework.UI.BunifuFlatButton()
@@ -35,14 +35,11 @@ Partial Class Main
         Me.closeButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.branchPanel = New System.Windows.Forms.Panel()
-        Me.branchSearchTextBox = New Bunifu.Framework.UI.BunifuTextbox()
         Me.DeleteBranchTextBox = New Bunifu.Framework.UI.BunifuTileButton()
         Me.EditBranchTextBox = New Bunifu.Framework.UI.BunifuTileButton()
         Me.addBranchButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.BunifuCards2 = New Bunifu.Framework.UI.BunifuCards()
         Me.branchDataGridView = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BranchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Spinner_Inventory_DbDataSet = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSet()
         Me.nameTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
@@ -50,7 +47,7 @@ Partial Class Main
         Me.inventoryPanel = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.branchComboBox = New System.Windows.Forms.ComboBox()
-        Me.searchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.inventorySearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.BunifuCards1 = New Bunifu.Framework.UI.BunifuCards()
         Me.inventoryDataGridView = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -84,6 +81,10 @@ Partial Class Main
         Me.inventoryLabel = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.BranchTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter()
         Me.InventoryTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter()
+        Me.branchSearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.branchSearchButton = New Bunifu.Framework.UI.BunifuFlatButton()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.navigationPanel.SuspendLayout()
         Me.mainPanel.SuspendLayout()
         Me.branchPanel.SuspendLayout()
@@ -235,6 +236,7 @@ Partial Class Main
         '
         'branchPanel
         '
+        Me.branchPanel.Controls.Add(Me.branchSearchButton)
         Me.branchPanel.Controls.Add(Me.branchSearchTextBox)
         Me.branchPanel.Controls.Add(Me.DeleteBranchTextBox)
         Me.branchPanel.Controls.Add(Me.EditBranchTextBox)
@@ -248,19 +250,6 @@ Partial Class Main
         Me.branchPanel.Size = New System.Drawing.Size(1136, 768)
         Me.branchPanel.TabIndex = 1
         Me.branchPanel.Visible = False
-        '
-        'branchSearchTextBox
-        '
-        Me.branchSearchTextBox.BackColor = System.Drawing.Color.Silver
-        Me.branchSearchTextBox.BackgroundImage = CType(resources.GetObject("branchSearchTextBox.BackgroundImage"), System.Drawing.Image)
-        Me.branchSearchTextBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.branchSearchTextBox.ForeColor = System.Drawing.Color.SeaGreen
-        Me.branchSearchTextBox.Icon = CType(resources.GetObject("branchSearchTextBox.Icon"), System.Drawing.Image)
-        Me.branchSearchTextBox.Location = New System.Drawing.Point(294, 49)
-        Me.branchSearchTextBox.Name = "branchSearchTextBox"
-        Me.branchSearchTextBox.Size = New System.Drawing.Size(284, 42)
-        Me.branchSearchTextBox.TabIndex = 42
-        Me.branchSearchTextBox.text = "Bunifu TextBox"
         '
         'DeleteBranchTextBox
         '
@@ -338,20 +327,20 @@ Partial Class Main
         '
         Me.branchDataGridView.AllowUserToAddRows = False
         Me.branchDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.branchDataGridView.AutoGenerateColumns = False
         Me.branchDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.branchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.branchDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.branchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.branchDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn})
         Me.branchDataGridView.DataSource = Me.BranchBindingSource
@@ -368,20 +357,6 @@ Partial Class Main
         Me.branchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.branchDataGridView.Size = New System.Drawing.Size(830, 653)
         Me.branchDataGridView.TabIndex = 1
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "id"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NameDataGridViewTextBoxColumn
-        '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "name"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
         '
         'BranchBindingSource
         '
@@ -426,7 +401,7 @@ Partial Class Main
         '
         Me.inventoryPanel.Controls.Add(Me.Label1)
         Me.inventoryPanel.Controls.Add(Me.branchComboBox)
-        Me.inventoryPanel.Controls.Add(Me.searchTextBox)
+        Me.inventoryPanel.Controls.Add(Me.inventorySearchTextBox)
         Me.inventoryPanel.Controls.Add(Me.BunifuCards1)
         Me.inventoryPanel.Controls.Add(Me.remarksTextBox)
         Me.inventoryPanel.Controls.Add(Me.unitTextBox)
@@ -473,24 +448,24 @@ Partial Class Main
         Me.branchComboBox.Size = New System.Drawing.Size(231, 31)
         Me.branchComboBox.TabIndex = 42
         '
-        'searchTextBox
+        'inventorySearchTextBox
         '
-        Me.searchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.searchTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.searchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.searchTextBox.HintForeColor = System.Drawing.Color.Empty
-        Me.searchTextBox.HintText = "Search"
-        Me.searchTextBox.isPassword = False
-        Me.searchTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
-        Me.searchTextBox.LineIdleColor = System.Drawing.Color.Gray
-        Me.searchTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
-        Me.searchTextBox.LineThickness = 3
-        Me.searchTextBox.Location = New System.Drawing.Point(13, 232)
-        Me.searchTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.searchTextBox.Name = "searchTextBox"
-        Me.searchTextBox.Size = New System.Drawing.Size(777, 44)
-        Me.searchTextBox.TabIndex = 41
-        Me.searchTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.inventorySearchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.inventorySearchTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.inventorySearchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.inventorySearchTextBox.HintForeColor = System.Drawing.Color.Empty
+        Me.inventorySearchTextBox.HintText = "Search"
+        Me.inventorySearchTextBox.isPassword = False
+        Me.inventorySearchTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
+        Me.inventorySearchTextBox.LineIdleColor = System.Drawing.Color.Gray
+        Me.inventorySearchTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
+        Me.inventorySearchTextBox.LineThickness = 3
+        Me.inventorySearchTextBox.Location = New System.Drawing.Point(13, 232)
+        Me.inventorySearchTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.inventorySearchTextBox.Name = "inventorySearchTextBox"
+        Me.inventorySearchTextBox.Size = New System.Drawing.Size(777, 44)
+        Me.inventorySearchTextBox.TabIndex = 41
+        Me.inventorySearchTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'BunifuCards1
         '
@@ -511,20 +486,20 @@ Partial Class Main
         '
         Me.inventoryDataGridView.AllowUserToAddRows = False
         Me.inventoryDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.inventoryDataGridView.AutoGenerateColumns = False
         Me.inventoryDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.inventoryDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.inventoryDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.inventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.inventoryDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn1, Me.BranchidDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.UnitDataGridViewTextBoxColumn, Me.InventorybeginningDataGridViewTextBoxColumn, Me.QuantityDataGridViewTextBoxColumn, Me.PriceDataGridViewTextBoxColumn, Me.TransferinDataGridViewTextBoxColumn, Me.TransferoutDataGridViewTextBoxColumn, Me.WastageDataGridViewTextBoxColumn, Me.InventoryendingDataGridViewTextBoxColumn, Me.UsageDataGridViewTextBoxColumn, Me.RemarksDataGridViewTextBoxColumn})
         Me.inventoryDataGridView.DataSource = Me.InventoryBindingSource
@@ -920,6 +895,73 @@ Partial Class Main
         '
         Me.InventoryTableAdapter.ClearBeforeFill = True
         '
+        'branchSearchTextBox
+        '
+        Me.branchSearchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.branchSearchTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.branchSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.branchSearchTextBox.HintForeColor = System.Drawing.Color.Empty
+        Me.branchSearchTextBox.HintText = "Search"
+        Me.branchSearchTextBox.isPassword = False
+        Me.branchSearchTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
+        Me.branchSearchTextBox.LineIdleColor = System.Drawing.Color.Gray
+        Me.branchSearchTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
+        Me.branchSearchTextBox.LineThickness = 3
+        Me.branchSearchTextBox.Location = New System.Drawing.Point(297, 49)
+        Me.branchSearchTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.branchSearchTextBox.Name = "branchSearchTextBox"
+        Me.branchSearchTextBox.Size = New System.Drawing.Size(682, 44)
+        Me.branchSearchTextBox.TabIndex = 42
+        Me.branchSearchTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'branchSearchButton
+        '
+        Me.branchSearchButton.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.branchSearchButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.branchSearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.branchSearchButton.BorderRadius = 0
+        Me.branchSearchButton.ButtonText = "Search"
+        Me.branchSearchButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.branchSearchButton.DisabledColor = System.Drawing.Color.Gray
+        Me.branchSearchButton.Iconcolor = System.Drawing.Color.Transparent
+        Me.branchSearchButton.Iconimage = CType(resources.GetObject("branchSearchButton.Iconimage"), System.Drawing.Image)
+        Me.branchSearchButton.Iconimage_right = Nothing
+        Me.branchSearchButton.Iconimage_right_Selected = Nothing
+        Me.branchSearchButton.Iconimage_Selected = Nothing
+        Me.branchSearchButton.IconMarginLeft = 0
+        Me.branchSearchButton.IconMarginRight = 0
+        Me.branchSearchButton.IconRightVisible = False
+        Me.branchSearchButton.IconRightZoom = 0R
+        Me.branchSearchButton.IconVisible = False
+        Me.branchSearchButton.IconZoom = 90.0R
+        Me.branchSearchButton.IsTab = False
+        Me.branchSearchButton.Location = New System.Drawing.Point(989, 51)
+        Me.branchSearchButton.Name = "branchSearchButton"
+        Me.branchSearchButton.Normalcolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.branchSearchButton.OnHovercolor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(77, Byte), Integer))
+        Me.branchSearchButton.OnHoverTextColor = System.Drawing.Color.White
+        Me.branchSearchButton.selected = False
+        Me.branchSearchButton.Size = New System.Drawing.Size(135, 42)
+        Me.branchSearchButton.TabIndex = 6
+        Me.branchSearchButton.Text = "Search"
+        Me.branchSearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.branchSearchButton.Textcolor = System.Drawing.Color.White
+        Me.branchSearchButton.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -973,19 +1015,16 @@ Partial Class Main
     Friend WithEvents deleteInventoryButton As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents editInventoryButton As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents addInventoryButton As Bunifu.Framework.UI.BunifuTileButton
-    Friend WithEvents branchSearchTextBox As Bunifu.Framework.UI.BunifuTextbox
     Friend WithEvents DeleteBranchTextBox As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents EditBranchTextBox As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents addBranchButton As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents BunifuCards2 As Bunifu.Framework.UI.BunifuCards
     Friend WithEvents branchDataGridView As Bunifu.Framework.UI.BunifuCustomDataGrid
     Friend WithEvents nameTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents searchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents inventorySearchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Spinner_Inventory_DbDataSet As Spinner_Inventory_DbDataSet
     Friend WithEvents BranchBindingSource As BindingSource
     Friend WithEvents BranchTableAdapter As Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents InventoryBindingSource As BindingSource
     Friend WithEvents InventoryTableAdapter As Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter
     Friend WithEvents IdDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -1003,4 +1042,8 @@ Partial Class Main
     Friend WithEvents RemarksDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents branchComboBox As ComboBox
+    Friend WithEvents branchSearchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents branchSearchButton As Bunifu.Framework.UI.BunifuFlatButton
+    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
