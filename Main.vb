@@ -106,6 +106,26 @@ Public Class Main
 
             DisplayData("branch")
             LoadInComboBox()
+            ClearValues("branch")
+        End If
+    End Sub
+
+    Private Sub DeleteData(table As String, id As Integer)
+        Connect()
+
+        If table = "inventory" Then
+
+        End If
+
+        If table = "branch" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "DELETE FROM " & table & " WHERE id = " & id & ""
+            cmd.ExecuteNonQuery()
+
+            DisplayData("branch")
+            LoadInComboBox()
+            ClearValues("branch")
         End If
     End Sub
 
@@ -188,5 +208,9 @@ Public Class Main
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub DeleteBranchTextBox_Click(sender As Object, e As EventArgs) Handles DeleteBranchTextBox.Click
+        DeleteData("branch", selectedBranchId)
     End Sub
 End Class
