@@ -24,10 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.inventoryButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.DoubleBitmapControl1 = New BunifuAnimatorNS.DoubleBitmapControl()
         Me.branchButton = New Bunifu.Framework.UI.BunifuFlatButton()
@@ -35,11 +35,15 @@ Partial Class Main
         Me.closeButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.branchPanel = New System.Windows.Forms.Panel()
+        Me.branchSearchButton = New Bunifu.Framework.UI.BunifuFlatButton()
+        Me.branchSearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.DeleteBranchTextBox = New Bunifu.Framework.UI.BunifuTileButton()
         Me.EditBranchTextBox = New Bunifu.Framework.UI.BunifuTileButton()
         Me.addBranchButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.BunifuCards2 = New Bunifu.Framework.UI.BunifuCards()
         Me.branchDataGridView = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BranchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Spinner_Inventory_DbDataSet = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSet()
         Me.nameTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
@@ -50,23 +54,10 @@ Partial Class Main
         Me.inventorySearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.BunifuCards1 = New Bunifu.Framework.UI.BunifuCards()
         Me.inventoryDataGridView = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BranchidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InventorybeginningDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QuantityDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TransferinDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TransferoutDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WastageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InventoryendingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UsageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemarksDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.InventoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.remarksTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.deleteInventoryButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.unitTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.deleteInventoryButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.editInventoryButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.usageTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.addInventoryButton = New Bunifu.Framework.UI.BunifuTileButton()
@@ -81,10 +72,19 @@ Partial Class Main
         Me.inventoryLabel = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.BranchTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter()
         Me.InventoryTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter()
-        Me.branchSearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.branchSearchButton = New Bunifu.Framework.UI.BunifuFlatButton()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BranchidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InventorybeginningDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QuantityDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TransferinDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TransferoutDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WastageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InventoryendingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UsageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemarksDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.navigationPanel.SuspendLayout()
         Me.mainPanel.SuspendLayout()
         Me.branchPanel.SuspendLayout()
@@ -226,8 +226,8 @@ Partial Class Main
         '
         'mainPanel
         '
-        Me.mainPanel.Controls.Add(Me.branchPanel)
         Me.mainPanel.Controls.Add(Me.inventoryPanel)
+        Me.mainPanel.Controls.Add(Me.branchPanel)
         Me.mainPanel.Dock = System.Windows.Forms.DockStyle.Right
         Me.mainPanel.Location = New System.Drawing.Point(230, 0)
         Me.mainPanel.Name = "mainPanel"
@@ -250,6 +250,59 @@ Partial Class Main
         Me.branchPanel.Size = New System.Drawing.Size(1136, 768)
         Me.branchPanel.TabIndex = 1
         Me.branchPanel.Visible = False
+        '
+        'branchSearchButton
+        '
+        Me.branchSearchButton.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.branchSearchButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.branchSearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.branchSearchButton.BorderRadius = 0
+        Me.branchSearchButton.ButtonText = "Search"
+        Me.branchSearchButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.branchSearchButton.DisabledColor = System.Drawing.Color.Gray
+        Me.branchSearchButton.Iconcolor = System.Drawing.Color.Transparent
+        Me.branchSearchButton.Iconimage = CType(resources.GetObject("branchSearchButton.Iconimage"), System.Drawing.Image)
+        Me.branchSearchButton.Iconimage_right = Nothing
+        Me.branchSearchButton.Iconimage_right_Selected = Nothing
+        Me.branchSearchButton.Iconimage_Selected = Nothing
+        Me.branchSearchButton.IconMarginLeft = 0
+        Me.branchSearchButton.IconMarginRight = 0
+        Me.branchSearchButton.IconRightVisible = False
+        Me.branchSearchButton.IconRightZoom = 0R
+        Me.branchSearchButton.IconVisible = False
+        Me.branchSearchButton.IconZoom = 90.0R
+        Me.branchSearchButton.IsTab = False
+        Me.branchSearchButton.Location = New System.Drawing.Point(989, 51)
+        Me.branchSearchButton.Name = "branchSearchButton"
+        Me.branchSearchButton.Normalcolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.branchSearchButton.OnHovercolor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(77, Byte), Integer))
+        Me.branchSearchButton.OnHoverTextColor = System.Drawing.Color.White
+        Me.branchSearchButton.selected = False
+        Me.branchSearchButton.Size = New System.Drawing.Size(135, 42)
+        Me.branchSearchButton.TabIndex = 6
+        Me.branchSearchButton.Text = "Search"
+        Me.branchSearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.branchSearchButton.Textcolor = System.Drawing.Color.White
+        Me.branchSearchButton.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
+        'branchSearchTextBox
+        '
+        Me.branchSearchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.branchSearchTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.branchSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.branchSearchTextBox.HintForeColor = System.Drawing.Color.Empty
+        Me.branchSearchTextBox.HintText = "Search"
+        Me.branchSearchTextBox.isPassword = False
+        Me.branchSearchTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
+        Me.branchSearchTextBox.LineIdleColor = System.Drawing.Color.Gray
+        Me.branchSearchTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
+        Me.branchSearchTextBox.LineThickness = 3
+        Me.branchSearchTextBox.Location = New System.Drawing.Point(297, 49)
+        Me.branchSearchTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.branchSearchTextBox.Name = "branchSearchTextBox"
+        Me.branchSearchTextBox.Size = New System.Drawing.Size(682, 44)
+        Me.branchSearchTextBox.TabIndex = 42
+        Me.branchSearchTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'DeleteBranchTextBox
         '
@@ -327,20 +380,20 @@ Partial Class Main
         '
         Me.branchDataGridView.AllowUserToAddRows = False
         Me.branchDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
         Me.branchDataGridView.AutoGenerateColumns = False
         Me.branchDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.branchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.branchDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle26.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle26.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.branchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.branchDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn})
         Me.branchDataGridView.DataSource = Me.BranchBindingSource
@@ -357,6 +410,20 @@ Partial Class Main
         Me.branchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.branchDataGridView.Size = New System.Drawing.Size(830, 653)
         Me.branchDataGridView.TabIndex = 1
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
         '
         'BranchBindingSource
         '
@@ -423,7 +490,6 @@ Partial Class Main
         Me.inventoryPanel.Name = "inventoryPanel"
         Me.inventoryPanel.Size = New System.Drawing.Size(1136, 768)
         Me.inventoryPanel.TabIndex = 0
-        Me.inventoryPanel.Visible = False
         '
         'Label1
         '
@@ -486,20 +552,20 @@ Partial Class Main
         '
         Me.inventoryDataGridView.AllowUserToAddRows = False
         Me.inventoryDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
         Me.inventoryDataGridView.AutoGenerateColumns = False
         Me.inventoryDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.inventoryDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.inventoryDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle28
         Me.inventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.inventoryDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn1, Me.BranchidDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.UnitDataGridViewTextBoxColumn, Me.InventorybeginningDataGridViewTextBoxColumn, Me.QuantityDataGridViewTextBoxColumn, Me.PriceDataGridViewTextBoxColumn, Me.TransferinDataGridViewTextBoxColumn, Me.TransferoutDataGridViewTextBoxColumn, Me.WastageDataGridViewTextBoxColumn, Me.InventoryendingDataGridViewTextBoxColumn, Me.UsageDataGridViewTextBoxColumn, Me.RemarksDataGridViewTextBoxColumn})
         Me.inventoryDataGridView.DataSource = Me.InventoryBindingSource
@@ -507,104 +573,13 @@ Partial Class Main
         Me.inventoryDataGridView.DoubleBuffered = True
         Me.inventoryDataGridView.EnableHeadersVisualStyles = False
         Me.inventoryDataGridView.HeaderBgColor = System.Drawing.Color.SeaGreen
-        Me.inventoryDataGridView.HeaderForeColor = System.Drawing.Color.SeaGreen
+        Me.inventoryDataGridView.HeaderForeColor = System.Drawing.Color.White
         Me.inventoryDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.inventoryDataGridView.Name = "inventoryDataGridView"
         Me.inventoryDataGridView.ReadOnly = True
         Me.inventoryDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.inventoryDataGridView.Size = New System.Drawing.Size(1111, 458)
         Me.inventoryDataGridView.TabIndex = 1
-        '
-        'IdDataGridViewTextBoxColumn1
-        '
-        Me.IdDataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn1.HeaderText = "id"
-        Me.IdDataGridViewTextBoxColumn1.Name = "IdDataGridViewTextBoxColumn1"
-        Me.IdDataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'BranchidDataGridViewTextBoxColumn
-        '
-        Me.BranchidDataGridViewTextBoxColumn.DataPropertyName = "branch_id"
-        Me.BranchidDataGridViewTextBoxColumn.HeaderText = "branch_id"
-        Me.BranchidDataGridViewTextBoxColumn.Name = "BranchidDataGridViewTextBoxColumn"
-        Me.BranchidDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UnitDataGridViewTextBoxColumn
-        '
-        Me.UnitDataGridViewTextBoxColumn.DataPropertyName = "unit"
-        Me.UnitDataGridViewTextBoxColumn.HeaderText = "unit"
-        Me.UnitDataGridViewTextBoxColumn.Name = "UnitDataGridViewTextBoxColumn"
-        Me.UnitDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InventorybeginningDataGridViewTextBoxColumn
-        '
-        Me.InventorybeginningDataGridViewTextBoxColumn.DataPropertyName = "inventory_beginning"
-        Me.InventorybeginningDataGridViewTextBoxColumn.HeaderText = "inventory_beginning"
-        Me.InventorybeginningDataGridViewTextBoxColumn.Name = "InventorybeginningDataGridViewTextBoxColumn"
-        Me.InventorybeginningDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'QuantityDataGridViewTextBoxColumn
-        '
-        Me.QuantityDataGridViewTextBoxColumn.DataPropertyName = "quantity"
-        Me.QuantityDataGridViewTextBoxColumn.HeaderText = "quantity"
-        Me.QuantityDataGridViewTextBoxColumn.Name = "QuantityDataGridViewTextBoxColumn"
-        Me.QuantityDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PriceDataGridViewTextBoxColumn
-        '
-        Me.PriceDataGridViewTextBoxColumn.DataPropertyName = "price"
-        Me.PriceDataGridViewTextBoxColumn.HeaderText = "price"
-        Me.PriceDataGridViewTextBoxColumn.Name = "PriceDataGridViewTextBoxColumn"
-        Me.PriceDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TransferinDataGridViewTextBoxColumn
-        '
-        Me.TransferinDataGridViewTextBoxColumn.DataPropertyName = "transfer_in"
-        Me.TransferinDataGridViewTextBoxColumn.HeaderText = "transfer_in"
-        Me.TransferinDataGridViewTextBoxColumn.Name = "TransferinDataGridViewTextBoxColumn"
-        Me.TransferinDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TransferoutDataGridViewTextBoxColumn
-        '
-        Me.TransferoutDataGridViewTextBoxColumn.DataPropertyName = "transfer_out"
-        Me.TransferoutDataGridViewTextBoxColumn.HeaderText = "transfer_out"
-        Me.TransferoutDataGridViewTextBoxColumn.Name = "TransferoutDataGridViewTextBoxColumn"
-        Me.TransferoutDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'WastageDataGridViewTextBoxColumn
-        '
-        Me.WastageDataGridViewTextBoxColumn.DataPropertyName = "wastage"
-        Me.WastageDataGridViewTextBoxColumn.HeaderText = "wastage"
-        Me.WastageDataGridViewTextBoxColumn.Name = "WastageDataGridViewTextBoxColumn"
-        Me.WastageDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InventoryendingDataGridViewTextBoxColumn
-        '
-        Me.InventoryendingDataGridViewTextBoxColumn.DataPropertyName = "inventory_ending"
-        Me.InventoryendingDataGridViewTextBoxColumn.HeaderText = "inventory_ending"
-        Me.InventoryendingDataGridViewTextBoxColumn.Name = "InventoryendingDataGridViewTextBoxColumn"
-        Me.InventoryendingDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UsageDataGridViewTextBoxColumn
-        '
-        Me.UsageDataGridViewTextBoxColumn.DataPropertyName = "usage"
-        Me.UsageDataGridViewTextBoxColumn.HeaderText = "usage"
-        Me.UsageDataGridViewTextBoxColumn.Name = "UsageDataGridViewTextBoxColumn"
-        Me.UsageDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RemarksDataGridViewTextBoxColumn
-        '
-        Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "remarks"
-        Me.RemarksDataGridViewTextBoxColumn.HeaderText = "remarks"
-        Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
-        Me.RemarksDataGridViewTextBoxColumn.ReadOnly = True
         '
         'InventoryBindingSource
         '
@@ -630,25 +605,6 @@ Partial Class Main
         Me.remarksTextBox.TabIndex = 34
         Me.remarksTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'deleteInventoryButton
-        '
-        Me.deleteInventoryButton.BackColor = System.Drawing.Color.SeaGreen
-        Me.deleteInventoryButton.color = System.Drawing.Color.SeaGreen
-        Me.deleteInventoryButton.colorActive = System.Drawing.Color.MediumSeaGreen
-        Me.deleteInventoryButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.deleteInventoryButton.Font = New System.Drawing.Font("Century Gothic", 15.75!)
-        Me.deleteInventoryButton.ForeColor = System.Drawing.Color.White
-        Me.deleteInventoryButton.Image = CType(resources.GetObject("deleteInventoryButton.Image"), System.Drawing.Image)
-        Me.deleteInventoryButton.ImagePosition = 5
-        Me.deleteInventoryButton.ImageZoom = 40
-        Me.deleteInventoryButton.LabelPosition = 41
-        Me.deleteInventoryButton.LabelText = "Delete"
-        Me.deleteInventoryButton.Location = New System.Drawing.Point(989, 217)
-        Me.deleteInventoryButton.Margin = New System.Windows.Forms.Padding(5)
-        Me.deleteInventoryButton.Name = "deleteInventoryButton"
-        Me.deleteInventoryButton.Size = New System.Drawing.Size(84, 72)
-        Me.deleteInventoryButton.TabIndex = 38
-        '
         'unitTextBox
         '
         Me.unitTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
@@ -667,6 +623,25 @@ Partial Class Main
         Me.unitTextBox.Size = New System.Drawing.Size(231, 44)
         Me.unitTextBox.TabIndex = 33
         Me.unitTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'deleteInventoryButton
+        '
+        Me.deleteInventoryButton.BackColor = System.Drawing.Color.SeaGreen
+        Me.deleteInventoryButton.color = System.Drawing.Color.SeaGreen
+        Me.deleteInventoryButton.colorActive = System.Drawing.Color.MediumSeaGreen
+        Me.deleteInventoryButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.deleteInventoryButton.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.deleteInventoryButton.ForeColor = System.Drawing.Color.White
+        Me.deleteInventoryButton.Image = CType(resources.GetObject("deleteInventoryButton.Image"), System.Drawing.Image)
+        Me.deleteInventoryButton.ImagePosition = 5
+        Me.deleteInventoryButton.ImageZoom = 40
+        Me.deleteInventoryButton.LabelPosition = 41
+        Me.deleteInventoryButton.LabelText = "Delete"
+        Me.deleteInventoryButton.Location = New System.Drawing.Point(989, 217)
+        Me.deleteInventoryButton.Margin = New System.Windows.Forms.Padding(5)
+        Me.deleteInventoryButton.Name = "deleteInventoryButton"
+        Me.deleteInventoryButton.Size = New System.Drawing.Size(84, 72)
+        Me.deleteInventoryButton.TabIndex = 38
         '
         'editInventoryButton
         '
@@ -895,72 +870,96 @@ Partial Class Main
         '
         Me.InventoryTableAdapter.ClearBeforeFill = True
         '
-        'branchSearchTextBox
+        'IdDataGridViewTextBoxColumn1
         '
-        Me.branchSearchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.branchSearchTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.branchSearchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.branchSearchTextBox.HintForeColor = System.Drawing.Color.Empty
-        Me.branchSearchTextBox.HintText = "Search"
-        Me.branchSearchTextBox.isPassword = False
-        Me.branchSearchTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
-        Me.branchSearchTextBox.LineIdleColor = System.Drawing.Color.Gray
-        Me.branchSearchTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
-        Me.branchSearchTextBox.LineThickness = 3
-        Me.branchSearchTextBox.Location = New System.Drawing.Point(297, 49)
-        Me.branchSearchTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.branchSearchTextBox.Name = "branchSearchTextBox"
-        Me.branchSearchTextBox.Size = New System.Drawing.Size(682, 44)
-        Me.branchSearchTextBox.TabIndex = 42
-        Me.branchSearchTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.IdDataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.IdDataGridViewTextBoxColumn1.Name = "IdDataGridViewTextBoxColumn1"
+        Me.IdDataGridViewTextBoxColumn1.ReadOnly = True
         '
-        'branchSearchButton
+        'BranchidDataGridViewTextBoxColumn
         '
-        Me.branchSearchButton.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.branchSearchButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.branchSearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.branchSearchButton.BorderRadius = 0
-        Me.branchSearchButton.ButtonText = "Search"
-        Me.branchSearchButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.branchSearchButton.DisabledColor = System.Drawing.Color.Gray
-        Me.branchSearchButton.Iconcolor = System.Drawing.Color.Transparent
-        Me.branchSearchButton.Iconimage = CType(resources.GetObject("branchSearchButton.Iconimage"), System.Drawing.Image)
-        Me.branchSearchButton.Iconimage_right = Nothing
-        Me.branchSearchButton.Iconimage_right_Selected = Nothing
-        Me.branchSearchButton.Iconimage_Selected = Nothing
-        Me.branchSearchButton.IconMarginLeft = 0
-        Me.branchSearchButton.IconMarginRight = 0
-        Me.branchSearchButton.IconRightVisible = False
-        Me.branchSearchButton.IconRightZoom = 0R
-        Me.branchSearchButton.IconVisible = False
-        Me.branchSearchButton.IconZoom = 90.0R
-        Me.branchSearchButton.IsTab = False
-        Me.branchSearchButton.Location = New System.Drawing.Point(989, 51)
-        Me.branchSearchButton.Name = "branchSearchButton"
-        Me.branchSearchButton.Normalcolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.branchSearchButton.OnHovercolor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(77, Byte), Integer))
-        Me.branchSearchButton.OnHoverTextColor = System.Drawing.Color.White
-        Me.branchSearchButton.selected = False
-        Me.branchSearchButton.Size = New System.Drawing.Size(135, 42)
-        Me.branchSearchButton.TabIndex = 6
-        Me.branchSearchButton.Text = "Search"
-        Me.branchSearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.branchSearchButton.Textcolor = System.Drawing.Color.White
-        Me.branchSearchButton.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BranchidDataGridViewTextBoxColumn.DataPropertyName = "branch_id"
+        Me.BranchidDataGridViewTextBoxColumn.HeaderText = "Branch Name"
+        Me.BranchidDataGridViewTextBoxColumn.Name = "BranchidDataGridViewTextBoxColumn"
+        Me.BranchidDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'IdDataGridViewTextBoxColumn
+        'DescriptionDataGridViewTextBoxColumn
         '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'NameDataGridViewTextBoxColumn
+        'UnitDataGridViewTextBoxColumn
         '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.UnitDataGridViewTextBoxColumn.DataPropertyName = "unit"
+        Me.UnitDataGridViewTextBoxColumn.HeaderText = "Unit"
+        Me.UnitDataGridViewTextBoxColumn.Name = "UnitDataGridViewTextBoxColumn"
+        Me.UnitDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InventorybeginningDataGridViewTextBoxColumn
+        '
+        Me.InventorybeginningDataGridViewTextBoxColumn.DataPropertyName = "inventory_beginning"
+        Me.InventorybeginningDataGridViewTextBoxColumn.HeaderText = "Inventory Beginning"
+        Me.InventorybeginningDataGridViewTextBoxColumn.Name = "InventorybeginningDataGridViewTextBoxColumn"
+        Me.InventorybeginningDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'QuantityDataGridViewTextBoxColumn
+        '
+        Me.QuantityDataGridViewTextBoxColumn.DataPropertyName = "quantity"
+        Me.QuantityDataGridViewTextBoxColumn.HeaderText = "Qty"
+        Me.QuantityDataGridViewTextBoxColumn.Name = "QuantityDataGridViewTextBoxColumn"
+        Me.QuantityDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PriceDataGridViewTextBoxColumn
+        '
+        Me.PriceDataGridViewTextBoxColumn.DataPropertyName = "price"
+        Me.PriceDataGridViewTextBoxColumn.HeaderText = "Price"
+        Me.PriceDataGridViewTextBoxColumn.Name = "PriceDataGridViewTextBoxColumn"
+        Me.PriceDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TransferinDataGridViewTextBoxColumn
+        '
+        Me.TransferinDataGridViewTextBoxColumn.DataPropertyName = "transfer_in"
+        Me.TransferinDataGridViewTextBoxColumn.HeaderText = "Transfer In"
+        Me.TransferinDataGridViewTextBoxColumn.Name = "TransferinDataGridViewTextBoxColumn"
+        Me.TransferinDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TransferoutDataGridViewTextBoxColumn
+        '
+        Me.TransferoutDataGridViewTextBoxColumn.DataPropertyName = "transfer_out"
+        Me.TransferoutDataGridViewTextBoxColumn.HeaderText = "Transfer Out"
+        Me.TransferoutDataGridViewTextBoxColumn.Name = "TransferoutDataGridViewTextBoxColumn"
+        Me.TransferoutDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'WastageDataGridViewTextBoxColumn
+        '
+        Me.WastageDataGridViewTextBoxColumn.DataPropertyName = "wastage"
+        Me.WastageDataGridViewTextBoxColumn.HeaderText = "Wastage"
+        Me.WastageDataGridViewTextBoxColumn.Name = "WastageDataGridViewTextBoxColumn"
+        Me.WastageDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InventoryendingDataGridViewTextBoxColumn
+        '
+        Me.InventoryendingDataGridViewTextBoxColumn.DataPropertyName = "inventory_ending"
+        Me.InventoryendingDataGridViewTextBoxColumn.HeaderText = "Inventory Ending"
+        Me.InventoryendingDataGridViewTextBoxColumn.Name = "InventoryendingDataGridViewTextBoxColumn"
+        Me.InventoryendingDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UsageDataGridViewTextBoxColumn
+        '
+        Me.UsageDataGridViewTextBoxColumn.DataPropertyName = "usage"
+        Me.UsageDataGridViewTextBoxColumn.HeaderText = "Usage"
+        Me.UsageDataGridViewTextBoxColumn.Name = "UsageDataGridViewTextBoxColumn"
+        Me.UsageDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RemarksDataGridViewTextBoxColumn
+        '
+        Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "remarks"
+        Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
+        Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
+        Me.RemarksDataGridViewTextBoxColumn.ReadOnly = True
         '
         'Main
         '
@@ -1027,6 +1026,12 @@ Partial Class Main
     Friend WithEvents BranchTableAdapter As Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter
     Friend WithEvents InventoryBindingSource As BindingSource
     Friend WithEvents InventoryTableAdapter As Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter
+    Friend WithEvents Label1 As Label
+    Friend WithEvents branchComboBox As ComboBox
+    Friend WithEvents branchSearchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents branchSearchButton As Bunifu.Framework.UI.BunifuFlatButton
+    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IdDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents BranchidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -1040,10 +1045,4 @@ Partial Class Main
     Friend WithEvents InventoryendingDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents UsageDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RemarksDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Label1 As Label
-    Friend WithEvents branchComboBox As ComboBox
-    Friend WithEvents branchSearchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents branchSearchButton As Bunifu.Framework.UI.BunifuFlatButton
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
