@@ -196,7 +196,14 @@ Public Class Main
         Connect()
 
         If table = "inventory" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "DELETE FROM " & table & " WHERE id = " & id & ""
+            cmd.ExecuteNonQuery()
 
+            DisplayData("inventory", "branch")
+            LoadInComboBox()
+            ClearValues("inventory")
         End If
 
         If table = "branch" Then
@@ -234,7 +241,7 @@ Public Class Main
         If panel = "inventory" Then
             descriptionTextBox.Text = ""
             unitTextBox.Text = ""
-            branchComboBox.SelectedIndex = 0
+            branchComboBox.SelectedIndex = -1
             inventoryBeginningTextBox.Text = ""
             quantityTextBox.Text = ""
             priceTextBox.Text = ""
@@ -365,5 +372,9 @@ Public Class Main
 
     Private Sub EditInventoryButton_Click(sender As Object, e As EventArgs) Handles editInventoryButton.Click
         EditData("inventory", selectedInventoryId, branchId)
+    End Sub
+
+    Private Sub DeleteInventoryButton_Click(sender As Object, e As EventArgs) Handles deleteInventoryButton.Click
+        DeleteData("inventory", selectedInventoryId)
     End Sub
 End Class
