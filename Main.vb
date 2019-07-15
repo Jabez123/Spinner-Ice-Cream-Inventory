@@ -27,16 +27,16 @@ Public Class Main
         If table = "inventory" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
-            cmd.CommandText = "select inventory.id, branch.branch_name,
-                                inventory.description, inventory.unit, 
-                                inventory.inventory_beginning, 
-                                inventory.quantity, price, 
-                                inventory.transfer_in, 
-                                inventory.transfer_out,
-                                inventory.wastage, 
-                                inventory.inventory_ending, 
-                                inventory.usage, 
-                                inventory.remarks 
+            cmd.CommandText = "select branch.branch_name AS 'Branch Name',
+                                inventory.description AS 'Description', inventory.unit AS 'Unit', 
+                                inventory.inventory_beginning AS 'Inventory Beginning', 
+                                inventory.quantity AS 'Qty', price as 'Price', 
+                                inventory.transfer_in as 'Transfer In', 
+                                inventory.transfer_out as 'Transfer Out',
+                                inventory.wastage as 'Wastage', 
+                                inventory.inventory_ending as 'Inventory Ending', 
+                                inventory.usage as 'Usage', 
+                                inventory.remarks as 'Remarks' 
                                 from " & table & "
                                 inner join " & join & " 
                                 on inventory.branch_id = branch.id;"
@@ -52,7 +52,7 @@ Public Class Main
         If table = "branch" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
-            cmd.CommandText = "select * from " & table & ";"
+            cmd.CommandText = "select branch_name as 'Branch Name' from " & table & ";"
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable
@@ -110,7 +110,7 @@ Public Class Main
             '" & quantityTextBox.Text & "', '" & priceTextBox.Text & "',
             '" & transferInTextBox.Text & "', '" & transferOutTextBox.Text & "',
             '" & wastageTextBox.Text & "', '" & inventoryEndingTextBox.Text & "',
-            '" & remarksTextBox.Text & "')"
+            '" & usageTextBox.Text & "', '" & remarksTextBox.Text & "')"
 
             cmd.ExecuteNonQuery()
 
@@ -190,7 +190,6 @@ Public Class Main
         End If
     End Sub
 
-
     Private Sub ClearValues(panel As String)
         If panel = "inventory" Then
             descriptionTextBox.Text = ""
@@ -250,7 +249,7 @@ Public Class Main
     End Sub
 
     Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
-
+        AddData("inventory", branchId)
     End Sub
 
     Private Sub InventoryDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles inventoryDataGridView.CellDoubleClick

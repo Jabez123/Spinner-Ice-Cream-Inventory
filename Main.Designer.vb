@@ -24,10 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.inventoryButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.DoubleBitmapControl1 = New BunifuAnimatorNS.DoubleBitmapControl()
         Me.branchButton = New Bunifu.Framework.UI.BunifuFlatButton()
@@ -42,8 +42,6 @@ Partial Class Main
         Me.addBranchButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.BunifuCards2 = New Bunifu.Framework.UI.BunifuCards()
         Me.branchDataGridView = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BranchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Spinner_Inventory_DbDataSet = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSet()
         Me.nameTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
@@ -72,19 +70,6 @@ Partial Class Main
         Me.inventoryLabel = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.BranchTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter()
         Me.InventoryTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter()
-        Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BranchidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InventorybeginningDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QuantityDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TransferinDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TransferoutDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WastageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InventoryendingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UsageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemarksDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.navigationPanel.SuspendLayout()
         Me.mainPanel.SuspendLayout()
         Me.branchPanel.SuspendLayout()
@@ -226,8 +211,8 @@ Partial Class Main
         '
         'mainPanel
         '
-        Me.mainPanel.Controls.Add(Me.inventoryPanel)
         Me.mainPanel.Controls.Add(Me.branchPanel)
+        Me.mainPanel.Controls.Add(Me.inventoryPanel)
         Me.mainPanel.Dock = System.Windows.Forms.DockStyle.Right
         Me.mainPanel.Location = New System.Drawing.Point(230, 0)
         Me.mainPanel.Name = "mainPanel"
@@ -369,34 +354,31 @@ Partial Class Main
         Me.BunifuCards2.color = System.Drawing.Color.Orange
         Me.BunifuCards2.Controls.Add(Me.branchDataGridView)
         Me.BunifuCards2.LeftSahddow = False
-        Me.BunifuCards2.Location = New System.Drawing.Point(294, 100)
+        Me.BunifuCards2.Location = New System.Drawing.Point(16, 187)
         Me.BunifuCards2.Name = "BunifuCards2"
         Me.BunifuCards2.RightSahddow = True
         Me.BunifuCards2.ShadowDepth = 20
-        Me.BunifuCards2.Size = New System.Drawing.Size(830, 653)
+        Me.BunifuCards2.Size = New System.Drawing.Size(1108, 566)
         Me.BunifuCards2.TabIndex = 36
         '
         'branchDataGridView
         '
         Me.branchDataGridView.AllowUserToAddRows = False
         Me.branchDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
-        Me.branchDataGridView.AutoGenerateColumns = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.branchDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.branchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.branchDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle26.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.branchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.branchDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn})
-        Me.branchDataGridView.DataSource = Me.BranchBindingSource
         Me.branchDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.branchDataGridView.DoubleBuffered = True
         Me.branchDataGridView.EnableHeadersVisualStyles = False
@@ -408,22 +390,8 @@ Partial Class Main
         Me.branchDataGridView.ReadOnly = True
         Me.branchDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.branchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.branchDataGridView.Size = New System.Drawing.Size(830, 653)
+        Me.branchDataGridView.Size = New System.Drawing.Size(1108, 566)
         Me.branchDataGridView.TabIndex = 1
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NameDataGridViewTextBoxColumn
-        '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
         '
         'BranchBindingSource
         '
@@ -552,23 +520,20 @@ Partial Class Main
         '
         Me.inventoryDataGridView.AllowUserToAddRows = False
         Me.inventoryDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
-        Me.inventoryDataGridView.AutoGenerateColumns = False
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.inventoryDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.inventoryDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.inventoryDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle28.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle28.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.inventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.inventoryDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn1, Me.BranchidDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.UnitDataGridViewTextBoxColumn, Me.InventorybeginningDataGridViewTextBoxColumn, Me.QuantityDataGridViewTextBoxColumn, Me.PriceDataGridViewTextBoxColumn, Me.TransferinDataGridViewTextBoxColumn, Me.TransferoutDataGridViewTextBoxColumn, Me.WastageDataGridViewTextBoxColumn, Me.InventoryendingDataGridViewTextBoxColumn, Me.UsageDataGridViewTextBoxColumn, Me.RemarksDataGridViewTextBoxColumn})
-        Me.inventoryDataGridView.DataSource = Me.InventoryBindingSource
         Me.inventoryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.inventoryDataGridView.DoubleBuffered = True
         Me.inventoryDataGridView.EnableHeadersVisualStyles = False
@@ -870,97 +835,6 @@ Partial Class Main
         '
         Me.InventoryTableAdapter.ClearBeforeFill = True
         '
-        'IdDataGridViewTextBoxColumn1
-        '
-        Me.IdDataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.IdDataGridViewTextBoxColumn1.Name = "IdDataGridViewTextBoxColumn1"
-        Me.IdDataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'BranchidDataGridViewTextBoxColumn
-        '
-        Me.BranchidDataGridViewTextBoxColumn.DataPropertyName = "branch_id"
-        Me.BranchidDataGridViewTextBoxColumn.HeaderText = "Branch Name"
-        Me.BranchidDataGridViewTextBoxColumn.Name = "BranchidDataGridViewTextBoxColumn"
-        Me.BranchidDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UnitDataGridViewTextBoxColumn
-        '
-        Me.UnitDataGridViewTextBoxColumn.DataPropertyName = "unit"
-        Me.UnitDataGridViewTextBoxColumn.HeaderText = "Unit"
-        Me.UnitDataGridViewTextBoxColumn.Name = "UnitDataGridViewTextBoxColumn"
-        Me.UnitDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InventorybeginningDataGridViewTextBoxColumn
-        '
-        Me.InventorybeginningDataGridViewTextBoxColumn.DataPropertyName = "inventory_beginning"
-        Me.InventorybeginningDataGridViewTextBoxColumn.HeaderText = "Inventory Beginning"
-        Me.InventorybeginningDataGridViewTextBoxColumn.Name = "InventorybeginningDataGridViewTextBoxColumn"
-        Me.InventorybeginningDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'QuantityDataGridViewTextBoxColumn
-        '
-        Me.QuantityDataGridViewTextBoxColumn.DataPropertyName = "quantity"
-        Me.QuantityDataGridViewTextBoxColumn.HeaderText = "Qty"
-        Me.QuantityDataGridViewTextBoxColumn.Name = "QuantityDataGridViewTextBoxColumn"
-        Me.QuantityDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PriceDataGridViewTextBoxColumn
-        '
-        Me.PriceDataGridViewTextBoxColumn.DataPropertyName = "price"
-        Me.PriceDataGridViewTextBoxColumn.HeaderText = "Price"
-        Me.PriceDataGridViewTextBoxColumn.Name = "PriceDataGridViewTextBoxColumn"
-        Me.PriceDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TransferinDataGridViewTextBoxColumn
-        '
-        Me.TransferinDataGridViewTextBoxColumn.DataPropertyName = "transfer_in"
-        Me.TransferinDataGridViewTextBoxColumn.HeaderText = "Transfer In"
-        Me.TransferinDataGridViewTextBoxColumn.Name = "TransferinDataGridViewTextBoxColumn"
-        Me.TransferinDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TransferoutDataGridViewTextBoxColumn
-        '
-        Me.TransferoutDataGridViewTextBoxColumn.DataPropertyName = "transfer_out"
-        Me.TransferoutDataGridViewTextBoxColumn.HeaderText = "Transfer Out"
-        Me.TransferoutDataGridViewTextBoxColumn.Name = "TransferoutDataGridViewTextBoxColumn"
-        Me.TransferoutDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'WastageDataGridViewTextBoxColumn
-        '
-        Me.WastageDataGridViewTextBoxColumn.DataPropertyName = "wastage"
-        Me.WastageDataGridViewTextBoxColumn.HeaderText = "Wastage"
-        Me.WastageDataGridViewTextBoxColumn.Name = "WastageDataGridViewTextBoxColumn"
-        Me.WastageDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InventoryendingDataGridViewTextBoxColumn
-        '
-        Me.InventoryendingDataGridViewTextBoxColumn.DataPropertyName = "inventory_ending"
-        Me.InventoryendingDataGridViewTextBoxColumn.HeaderText = "Inventory Ending"
-        Me.InventoryendingDataGridViewTextBoxColumn.Name = "InventoryendingDataGridViewTextBoxColumn"
-        Me.InventoryendingDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UsageDataGridViewTextBoxColumn
-        '
-        Me.UsageDataGridViewTextBoxColumn.DataPropertyName = "usage"
-        Me.UsageDataGridViewTextBoxColumn.HeaderText = "Usage"
-        Me.UsageDataGridViewTextBoxColumn.Name = "UsageDataGridViewTextBoxColumn"
-        Me.UsageDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RemarksDataGridViewTextBoxColumn
-        '
-        Me.RemarksDataGridViewTextBoxColumn.DataPropertyName = "remarks"
-        Me.RemarksDataGridViewTextBoxColumn.HeaderText = "Remarks"
-        Me.RemarksDataGridViewTextBoxColumn.Name = "RemarksDataGridViewTextBoxColumn"
-        Me.RemarksDataGridViewTextBoxColumn.ReadOnly = True
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -971,7 +845,8 @@ Partial Class Main
         Me.Controls.Add(Me.navigationPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Main"
-        Me.Text = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Main"
         Me.navigationPanel.ResumeLayout(False)
         Me.mainPanel.ResumeLayout(False)
         Me.branchPanel.ResumeLayout(False)
@@ -1030,19 +905,4 @@ Partial Class Main
     Friend WithEvents branchComboBox As ComboBox
     Friend WithEvents branchSearchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents branchSearchButton As Bunifu.Framework.UI.BunifuFlatButton
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IdDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents BranchidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UnitDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents InventorybeginningDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents QuantityDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TransferinDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TransferoutDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents WastageDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents InventoryendingDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UsageDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RemarksDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
