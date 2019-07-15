@@ -27,7 +27,7 @@ Public Class Main
         If table = "inventory" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
-            cmd.CommandText = "select branch.branch_name AS 'Branch Name',
+            cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
                                 inventory.description AS 'Description', inventory.unit AS 'Unit', 
                                 inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
@@ -47,12 +47,13 @@ Public Class Main
             da.Fill(dt)
 
             inventoryDataGridView.DataSource = dt
+            inventoryDataGridView.Columns(0).Visible = False
         End If
 
         If table = "branch" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
-            cmd.CommandText = "select branch_name as 'Branch Name' from " & table & ";"
+            cmd.CommandText = "select id as 'ID', branch_name as 'Branch Name' from " & table & ";"
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable
@@ -60,6 +61,7 @@ Public Class Main
             da.Fill(dt)
 
             branchDataGridView.DataSource = dt
+            branchDataGridView.Columns(0).Visible = False
         End If
 
     End Sub
@@ -79,11 +81,12 @@ Public Class Main
         dr.Close()
     End Sub
 
-    Private Sub SelectBranch(SelectedBranch As String)
+    Private Sub SelectBranch(selectedBranch As String)
+        Connect
         Dim dr As SqlDataReader
         cmd = con.CreateCommand()
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "select * from branch where branch_name = '" & SelectedBranch & "'"
+        cmd.CommandText = "select * from branch where branch_name = '" & selectedBranch & "'"
         dr = cmd.ExecuteReader()
 
         While dr.Read
@@ -93,7 +96,25 @@ Public Class Main
         dr.Close()
 
         Console.WriteLine("Selected id " & branchId)
-        branchComboBox.SelectedText = SelectedBranch
+        branchComboBox.SelectedText = selectedBranch
+    End Sub
+
+    Private Sub SelectBranch(selectedIntBranch As Integer)
+        Connect()
+        Dim dr As SqlDataReader
+        cmd = con.CreateCommand()
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select * from branch where id = '" & selectedIntBranch & "'"
+        dr = cmd.ExecuteReader()
+
+        While dr.Read
+            selectedBranch = dr("branch_name").ToString()
+        End While
+
+        dr.Close()
+
+        Console.WriteLine("Selected branch " & selectedBranch)
+        branchComboBox.SelectedItem = selectedBranch
     End Sub
 
     Private Sub AddData(table As String, branchId As Integer)
@@ -132,11 +153,30 @@ Public Class Main
 
     End Sub
 
-    Private Sub EditData(table As String, id As Integer)
+    Private Sub EditData(table As String, id As Integer, branchId As Integer)
         Connect()
 
         If table = "inventory" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "UPDATE " & table & " 
+            SET branch_id ='" & branchId.ToString() & "', 
+            description = '" & descriptionTextBox.Text & "',
+            unit = '" & unitTextBox.Text & "',
+            inventory_beginning = '" & inventoryBeginningTextBox.Text & "',
+            quantity = '" & quantityTextBox.Text & "',
+            price = '" & priceTextBox.Text & "',
+            transfer_in = '" & transferInTextBox.Text & "',
+            transfer_out = '" & transferOutTextBox.Text & "',
+            wastage = '" & wastageTextBox.Text & "', 
+            inventory_ending = '" & inventoryEndingTextBox.Text & "',
+            usage = '" & usageTextBox.Text & "',
+            remarks = '" & remarksTextBox.Text & "' WHERE id = '" & id.ToString() & "';"
+            cmd.ExecuteNonQuery()
 
+            DisplayData("inventory", "branch")
+            LoadInComboBox()
+            ClearValues("inventory")
         End If
 
         If table = "branch" Then
@@ -236,7 +276,7 @@ Public Class Main
 
     Private Sub EditBranchTextBox_Click(sender As Object, e As EventArgs) Handles EditBranchTextBox.Click
         If selectedBranchId > 0 Then
-            EditData("branch", selectedBranchId)
+            EditData("branch", selectedBranchId, branchId)
         End If
     End Sub
 
@@ -256,11 +296,11 @@ Public Class Main
         Try
             Connect()
 
-            selectedBranchId = Convert.ToInt32(branchDataGridView.SelectedCells.Item(0).Value.ToString())
+            selectedInventoryId = Convert.ToInt32(inventoryDataGridView.SelectedCells.Item(0).Value.ToString())
 
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
-            cmd.CommandText = "SELECT * FROM inventory WHERE id= " & selectedBranchId.ToString() & ""
+            cmd.CommandText = "SELECT * FROM inventory WHERE id = " & selectedInventoryId.ToString() & ""
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable()
@@ -270,11 +310,24 @@ Public Class Main
             dr = cmd.ExecuteReader(CommandBehavior.CloseConnection)
 
             While dr.Read
-                nameTextBox.Text = dr.GetString(1).ToString()
+                branchId = dr.GetInt32(1).ToString()
+                descriptionTextBox.Text = dr.GetString(2).ToString()
+                unitTextBox.Text = dr.GetString(3).ToString()
+                inventoryBeginningTextBox.Text = dr.GetInt32(4).ToString()
+                quantityTextBox.Text = dr.GetInt32(5).ToString()
+                priceTextBox.Text = dr.GetDouble(6).ToString()
+                transferInTextBox.Text = dr.GetInt32(7).ToString()
+                transferOutTextBox.Text = dr.GetInt32(8).ToString()
+                wastageTextBox.Text = dr.GetInt32(9).ToString()
+                inventoryEndingTextBox.Text = dr.GetInt32(10).ToString()
+                usageTextBox.Text = dr.GetInt32(11).ToString()
+                remarksTextBox.Text = dr.GetString(12).ToString()
 
             End While
+            con.Close()
+            SelectBranch(branchId)
         Catch ex As Exception
-
+            MessageBox.Show(ex.ToString())
         End Try
     End Sub
 
@@ -308,5 +361,9 @@ Public Class Main
         selectedBranch = branchComboBox.SelectedItem
 
         SelectBranch(selectedBranch)
+    End Sub
+
+    Private Sub EditInventoryButton_Click(sender As Object, e As EventArgs) Handles editInventoryButton.Click
+        EditData("inventory", selectedInventoryId, branchId)
     End Sub
 End Class

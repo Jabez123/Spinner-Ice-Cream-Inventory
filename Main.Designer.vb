@@ -24,12 +24,11 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.inventoryButton = New Bunifu.Framework.UI.BunifuFlatButton()
-        Me.DoubleBitmapControl1 = New BunifuAnimatorNS.DoubleBitmapControl()
         Me.branchButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.navigationPanel = New System.Windows.Forms.Panel()
         Me.closeButton = New Bunifu.Framework.UI.BunifuFlatButton()
@@ -70,6 +69,7 @@ Partial Class Main
         Me.inventoryLabel = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.BranchTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter()
         Me.InventoryTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter()
+        Me.logoPictureBox = New System.Windows.Forms.PictureBox()
         Me.navigationPanel.SuspendLayout()
         Me.mainPanel.SuspendLayout()
         Me.branchPanel.SuspendLayout()
@@ -81,6 +81,7 @@ Partial Class Main
         Me.BunifuCards1.SuspendLayout()
         CType(Me.inventoryDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InventoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'inventoryButton
@@ -116,18 +117,6 @@ Partial Class Main
         Me.inventoryButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.inventoryButton.Textcolor = System.Drawing.Color.White
         Me.inventoryButton.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        '
-        'DoubleBitmapControl1
-        '
-        Me.DoubleBitmapControl1.BackgroundImage = Global.Spinner_Ice_Cream_Inventory.My.Resources.Resources.logo
-        Me.DoubleBitmapControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.DoubleBitmapControl1.Location = New System.Drawing.Point(12, 12)
-        Me.DoubleBitmapControl1.Margin = New System.Windows.Forms.Padding(3, 3, 9, 3)
-        Me.DoubleBitmapControl1.Name = "DoubleBitmapControl1"
-        Me.DoubleBitmapControl1.Size = New System.Drawing.Size(206, 90)
-        Me.DoubleBitmapControl1.TabIndex = 1
-        Me.DoubleBitmapControl1.Text = "DoubleBitmapControl1"
-        Me.DoubleBitmapControl1.Visible = False
         '
         'branchButton
         '
@@ -165,8 +154,8 @@ Partial Class Main
         '
         'navigationPanel
         '
+        Me.navigationPanel.Controls.Add(Me.logoPictureBox)
         Me.navigationPanel.Controls.Add(Me.closeButton)
-        Me.navigationPanel.Controls.Add(Me.DoubleBitmapControl1)
         Me.navigationPanel.Controls.Add(Me.inventoryButton)
         Me.navigationPanel.Controls.Add(Me.branchButton)
         Me.navigationPanel.Dock = System.Windows.Forms.DockStyle.Left
@@ -211,8 +200,8 @@ Partial Class Main
         '
         'mainPanel
         '
-        Me.mainPanel.Controls.Add(Me.branchPanel)
         Me.mainPanel.Controls.Add(Me.inventoryPanel)
+        Me.mainPanel.Controls.Add(Me.branchPanel)
         Me.mainPanel.Dock = System.Windows.Forms.DockStyle.Right
         Me.mainPanel.Location = New System.Drawing.Point(230, 0)
         Me.mainPanel.Name = "mainPanel"
@@ -365,19 +354,19 @@ Partial Class Main
         '
         Me.branchDataGridView.AllowUserToAddRows = False
         Me.branchDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.branchDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.branchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.branchDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.branchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.branchDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.branchDataGridView.DoubleBuffered = True
@@ -520,19 +509,19 @@ Partial Class Main
         '
         Me.inventoryDataGridView.AllowUserToAddRows = False
         Me.inventoryDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.inventoryDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.inventoryDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.inventoryDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.inventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.inventoryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.inventoryDataGridView.DoubleBuffered = True
@@ -543,6 +532,7 @@ Partial Class Main
         Me.inventoryDataGridView.Name = "inventoryDataGridView"
         Me.inventoryDataGridView.ReadOnly = True
         Me.inventoryDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.inventoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.inventoryDataGridView.Size = New System.Drawing.Size(1111, 458)
         Me.inventoryDataGridView.TabIndex = 1
         '
@@ -835,6 +825,16 @@ Partial Class Main
         '
         Me.InventoryTableAdapter.ClearBeforeFill = True
         '
+        'logoPictureBox
+        '
+        Me.logoPictureBox.Image = Global.Spinner_Ice_Cream_Inventory.My.Resources.Resources.logo
+        Me.logoPictureBox.Location = New System.Drawing.Point(12, 12)
+        Me.logoPictureBox.Name = "logoPictureBox"
+        Me.logoPictureBox.Size = New System.Drawing.Size(206, 90)
+        Me.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoPictureBox.TabIndex = 6
+        Me.logoPictureBox.TabStop = False
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -860,11 +860,11 @@ Partial Class Main
         Me.BunifuCards1.ResumeLayout(False)
         CType(Me.inventoryDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InventoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents inventoryButton As Bunifu.Framework.UI.BunifuFlatButton
-    Friend WithEvents DoubleBitmapControl1 As BunifuAnimatorNS.DoubleBitmapControl
     Friend WithEvents branchButton As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents navigationPanel As Panel
     Friend WithEvents closeButton As Bunifu.Framework.UI.BunifuFlatButton
@@ -905,4 +905,5 @@ Partial Class Main
     Friend WithEvents branchComboBox As ComboBox
     Friend WithEvents branchSearchTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents branchSearchButton As Bunifu.Framework.UI.BunifuFlatButton
+    Friend WithEvents logoPictureBox As PictureBox
 End Class
