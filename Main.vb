@@ -9,6 +9,7 @@ Public Class Main
     Dim selectedBranchId As Integer
     Dim selectedBranch As String
     Dim todaysDate As String
+    Dim totalInventory As Integer
 
     Private Sub ClearValues(panel As String)
         If panel = "inventory" Then
@@ -55,6 +56,32 @@ Public Class Main
         Else
             Console.WriteLine("Date is match")
         End If
+    End Sub
+
+    Private Sub ComputeInventory(_inventoryBeginning As String, _quantity As String,
+                                 _transferIn As String, _transferOut As String, _wastage As String,
+                                 _inventoryEnding As String, _usage As String)
+        Dim inventoryBeginning As Integer
+        Dim quantity As Integer
+        Dim transferIn As Integer
+        Dim transferOut As Integer
+        Dim wastage As Integer
+        Dim inventoryEnding As Integer
+        Dim usage As Integer
+
+        Int32.TryParse(_inventoryBeginning, inventoryBeginning)
+        Int32.TryParse(_quantity, quantity)
+        Int32.TryParse(_transferIn, transferIn)
+        Int32.TryParse(_transferOut, transferOut)
+        Int32.TryParse(_wastage, wastage)
+        Int32.TryParse(_inventoryEnding, inventoryEnding)
+        Int32.TryParse(_usage, usage)
+
+        inventoryEnding = inventoryBeginning + quantity + transferIn - transferOut - wastage - usage
+
+        totalInventory = inventoryEnding
+
+        Console.WriteLine(totalInventory)
     End Sub
 
 #Region "Database Related"
@@ -461,6 +488,62 @@ Public Class Main
     Private Sub BranchButton_Click(sender As Object, e As EventArgs) Handles branchButton.Click
         inventoryPanel.Visible = False
         branchPanel.Visible = True
+    End Sub
+
+    Private Sub InventoryBeginningTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles inventoryBeginningTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub PriceTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles priceTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub TransferOutTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles transferOutTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub InventoryEndingTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles inventoryEndingTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub QuantityTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles quantityTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub TransferInTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles transferInTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub WastageTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles wastageTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub UsageTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles usageTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
     End Sub
 
 
