@@ -8,6 +8,7 @@ Public Class Main
     Dim branchId As Integer
     Dim selectedBranchId As Integer
     Dim selectedBranch As String
+    Dim filterBranch As String
 
     Private Sub Connection()
         con.ConnectionString = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\Jabez\source\repos\Spinner Ice Cream Inventory\Spinner_Inventory_Db.mdf';Integrated Security=True"
@@ -218,15 +219,37 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub SearchData(table As String, searchTextBox As String)
+    Private Sub SearchData(table As String, searchTextBox As String, join As String)
         If table = "inventory" Then
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
+                                inventory.description AS 'Description', inventory.unit AS 'Unit', 
+                                inventory.inventory_beginning AS 'Inventory Beginning', 
+                                inventory.quantity AS 'Qty', price as 'Price', 
+                                inventory.transfer_in as 'Transfer In', 
+                                inventory.transfer_out as 'Transfer Out',
+                                inventory.wastage as 'Wastage', 
+                                inventory.inventory_ending as 'Inventory Ending', 
+                                inventory.usage as 'Usage', 
+                                inventory.remarks as 'Remarks' 
+                                from " & table & "
+                                inner Join " & join & " 
+                                On inventory.branch_id = branch.id where inventory.description LIKE '%" & searchTextBox & "%' OR
+                                branch.branch_name LIKE '%" & searchTextBox & "%';"
+            cmd.ExecuteNonQuery()
 
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+
+            inventoryDataGridView.DataSource = dt
         End If
 
         If table = "branch" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
-            cmd.CommandText = "select * from " & table & " where branch_name LIKE '%" & searchTextBox & "%';"
+            cmd.CommandText = "select branch_name as 'Branch Name' from " & table & " where branch_name LIKE '%" & searchTextBox & "%';"
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable
@@ -292,7 +315,7 @@ Public Class Main
     End Sub
 
     Private Sub BranchSearchButton_Click(sender As Object, e As EventArgs) Handles branchSearchButton.Click
-        SearchData("branch", branchSearchTextBox.Text)
+        SearchData("branch", branchSearchTextBox.Text, "branch")
     End Sub
 
     Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
@@ -376,5 +399,9 @@ Public Class Main
 
     Private Sub DeleteInventoryButton_Click(sender As Object, e As EventArgs) Handles deleteInventoryButton.Click
         DeleteData("inventory", selectedInventoryId)
+    End Sub
+
+    Private Sub InventorySearchButton_Click(sender As Object, e As EventArgs) Handles inventorySearchButton.Click
+        SearchData("inventory", inventorySearchTextBox.Text, "branch")
     End Sub
 End Class
