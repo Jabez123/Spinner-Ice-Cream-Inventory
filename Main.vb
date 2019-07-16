@@ -8,8 +8,36 @@ Public Class Main
     Dim branchId As Integer
     Dim selectedBranchId As Integer
     Dim selectedBranch As String
-    Dim filterBranch As String
 
+    Private Sub ClearValues(panel As String)
+        If panel = "inventory" Then
+            descriptionTextBox.Text = ""
+            unitTextBox.Text = ""
+            branchComboBox.SelectedIndex = -1
+            inventoryBeginningTextBox.Text = ""
+            quantityTextBox.Text = ""
+            priceTextBox.Text = ""
+            transferInTextBox.Text = ""
+            transferOutTextBox.Text = ""
+            wastageTextBox.Text = ""
+            inventoryEndingTextBox.Text = ""
+            usageTextBox.Text = ""
+            remarksTextBox.Text = ""
+        ElseIf panel = "branch" Then
+            nameTextBox.Text = ""
+        End If
+    End Sub
+
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Connection()
+        DisplayData("inventory", "branch")
+        DisplayData("branch", "branch")
+        LoadInComboBox()
+    End Sub
+
+#Region "Database Related"
+
+#Region "Connection"
     Private Sub Connection()
         con.ConnectionString = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\Jabez\source\repos\Spinner Ice Cream Inventory\Spinner_Inventory_Db.mdf';Integrated Security=True"
 
@@ -22,6 +50,23 @@ Public Class Main
         End If
 
         con.Open()
+    End Sub
+#End Region
+
+#Region "Load & Display Data"
+    Private Sub LoadInComboBox()
+        Dim dr As SqlDataReader
+        branchComboBox.Items.Clear()
+        cmd = con.CreateCommand()
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select * from branch"
+        dr = cmd.ExecuteReader()
+
+        While dr.Read
+            branchComboBox.Items.Add(dr("branch_name"))
+        End While
+
+        dr.Close()
     End Sub
 
     Private Sub DisplayData(table As String, join As String)
@@ -67,57 +112,9 @@ Public Class Main
 
     End Sub
 
-    Private Sub LoadInComboBox()
-        Dim dr As SqlDataReader
-        branchComboBox.Items.Clear()
-        cmd = con.CreateCommand()
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = "select * from branch"
-        dr = cmd.ExecuteReader()
+#End Region
 
-        While dr.Read
-            branchComboBox.Items.Add(dr("branch_name"))
-        End While
-
-        dr.Close()
-    End Sub
-
-    Private Sub SelectBranch(selectedBranch As String)
-        Connect
-        Dim dr As SqlDataReader
-        cmd = con.CreateCommand()
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = "select * from branch where branch_name = '" & selectedBranch & "'"
-        dr = cmd.ExecuteReader()
-
-        While dr.Read
-            branchId = Convert.ToInt32(dr("id").ToString())
-        End While
-
-        dr.Close()
-
-        Console.WriteLine("Selected id " & branchId)
-        branchComboBox.SelectedText = selectedBranch
-    End Sub
-
-    Private Sub SelectBranch(selectedIntBranch As Integer)
-        Connect()
-        Dim dr As SqlDataReader
-        cmd = con.CreateCommand()
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = "select * from branch where id = '" & selectedIntBranch & "'"
-        dr = cmd.ExecuteReader()
-
-        While dr.Read
-            selectedBranch = dr("branch_name").ToString()
-        End While
-
-        dr.Close()
-
-        Console.WriteLine("Selected branch " & selectedBranch)
-        branchComboBox.SelectedItem = selectedBranch
-    End Sub
-
+#Region "Add Data"
     Private Sub AddData(table As String, branchId As Integer)
 
         If table = "inventory" Then
@@ -153,7 +150,9 @@ Public Class Main
         MessageBox.Show("Added Successfully")
 
     End Sub
+#End Region
 
+#Region "Edit Data"
     Private Sub EditData(table As String, id As Integer, branchId As Integer)
         Connect()
 
@@ -192,7 +191,9 @@ Public Class Main
             ClearValues("branch")
         End If
     End Sub
+#End Region
 
+#Region "Delete Data"
     Private Sub DeleteData(table As String, id As Integer)
         Connect()
 
@@ -218,7 +219,10 @@ Public Class Main
             ClearValues("branch")
         End If
     End Sub
+#End Region
 
+
+#Region "Search Data"
     Private Sub SearchData(table As String, searchTextBox As String, join As String)
         If table = "inventory" Then
             cmd = con.CreateCommand()
@@ -259,69 +263,56 @@ Public Class Main
             branchDataGridView.DataSource = dt
         End If
     End Sub
+#End Region
+#End Region
 
-    Private Sub ClearValues(panel As String)
-        If panel = "inventory" Then
-            descriptionTextBox.Text = ""
-            unitTextBox.Text = ""
-            branchComboBox.SelectedIndex = -1
-            inventoryBeginningTextBox.Text = ""
-            quantityTextBox.Text = ""
-            priceTextBox.Text = ""
-            transferInTextBox.Text = ""
-            transferOutTextBox.Text = ""
-            wastageTextBox.Text = ""
-            inventoryEndingTextBox.Text = ""
-            usageTextBox.Text = ""
-            remarksTextBox.Text = ""
-        ElseIf panel = "branch" Then
-            nameTextBox.Text = ""
-        End If
+#Region "ComboBox"
+
+    Private Sub SelectBranch(selectedBranch As String)
+        Connect()
+        Dim dr As SqlDataReader
+        cmd = con.CreateCommand()
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select * from branch where branch_name = '" & selectedBranch & "'"
+        dr = cmd.ExecuteReader()
+
+        While dr.Read
+            branchId = Convert.ToInt32(dr("id").ToString())
+        End While
+
+        dr.Close()
+
+        Console.WriteLine("Selected id " & branchId)
+        branchComboBox.SelectedText = selectedBranch
     End Sub
 
-    Private Sub InventoryButton_Click(sender As Object, e As EventArgs) Handles inventoryButton.Click
-        inventoryPanel.Visible = True
-        branchPanel.Visible = False
+    Private Sub SelectBranch(selectedIntBranch As Integer)
+        Connect()
+        Dim dr As SqlDataReader
+        cmd = con.CreateCommand()
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select * from branch where id = '" & selectedIntBranch & "'"
+        dr = cmd.ExecuteReader()
+
+        While dr.Read
+            selectedBranch = dr("branch_name").ToString()
+        End While
+
+        dr.Close()
+
+        Console.WriteLine("Selected branch " & selectedBranch)
+        branchComboBox.SelectedItem = selectedBranch
     End Sub
 
-    Private Sub BranchButton_Click(sender As Object, e As EventArgs) Handles branchButton.Click
-        inventoryPanel.Visible = False
-        branchPanel.Visible = True
+    Private Sub BranchComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles branchComboBox.SelectedIndexChanged
+        selectedBranch = branchComboBox.SelectedItem
+
+        SelectBranch(selectedBranch)
     End Sub
 
-    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
-        Application.Exit()
-    End Sub
+#End Region
 
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Connection()
-        DisplayData("inventory", "branch")
-        DisplayData("branch", "branch")
-        LoadInComboBox()
-    End Sub
-
-    Private Sub AddBranchButton_Click(sender As Object, e As EventArgs) Handles addBranchButton.Click
-        AddData("branch", branchId)
-    End Sub
-
-    Private Sub EditBranchTextBox_Click(sender As Object, e As EventArgs) Handles EditBranchTextBox.Click
-        If selectedBranchId > 0 Then
-            EditData("branch", selectedBranchId, branchId)
-        End If
-    End Sub
-
-    Private Sub DeleteBranchTextBox_Click(sender As Object, e As EventArgs) Handles DeleteBranchTextBox.Click
-        DeleteData("branch", selectedBranchId)
-    End Sub
-
-    Private Sub BranchSearchButton_Click(sender As Object, e As EventArgs) Handles branchSearchButton.Click
-        SearchData("branch", branchSearchTextBox.Text, "branch")
-    End Sub
-
-    Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
-        AddData("inventory", branchId)
-    End Sub
-
+#Region "DataGridView"
     Private Sub InventoryDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles inventoryDataGridView.CellDoubleClick
         Try
             Connect()
@@ -387,21 +378,70 @@ Public Class Main
         End Try
     End Sub
 
-    Private Sub BranchComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles branchComboBox.SelectedIndexChanged
-        selectedBranch = branchComboBox.SelectedItem
+#End Region
 
-        SelectBranch(selectedBranch)
+#Region "Buttons"
+
+#Region "Search"
+    Private Sub InventorySearchButton_Click(sender As Object, e As EventArgs) Handles inventorySearchButton.Click
+        SearchData("inventory", inventorySearchTextBox.Text, "branch")
     End Sub
 
-    Private Sub EditInventoryButton_Click(sender As Object, e As EventArgs) Handles editInventoryButton.Click
-        EditData("inventory", selectedInventoryId, branchId)
+    Private Sub BranchSearchButton_Click(sender As Object, e As EventArgs) Handles branchSearchButton.Click
+        SearchData("branch", branchSearchTextBox.Text, "branch")
     End Sub
+#End Region
 
+#Region "Delete"
     Private Sub DeleteInventoryButton_Click(sender As Object, e As EventArgs) Handles deleteInventoryButton.Click
         DeleteData("inventory", selectedInventoryId)
     End Sub
 
-    Private Sub InventorySearchButton_Click(sender As Object, e As EventArgs) Handles inventorySearchButton.Click
-        SearchData("inventory", inventorySearchTextBox.Text, "branch")
+    Private Sub DeleteBranchTextBox_Click(sender As Object, e As EventArgs) Handles DeleteBranchTextBox.Click
+        DeleteData("branch", selectedBranchId)
     End Sub
+#End Region
+
+#Region "Edit"
+    Private Sub EditInventoryButton_Click(sender As Object, e As EventArgs) Handles editInventoryButton.Click
+        EditData("inventory", selectedInventoryId, branchId)
+    End Sub
+
+    Private Sub EditBranchTextBox_Click(sender As Object, e As EventArgs) Handles EditBranchTextBox.Click
+        If selectedBranchId > 0 Then
+            EditData("branch", selectedBranchId, branchId)
+        End If
+    End Sub
+#End Region
+
+#Region "Add"
+    Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
+        AddData("inventory", branchId)
+    End Sub
+
+    Private Sub AddBranchButton_Click(sender As Object, e As EventArgs) Handles addBranchButton.Click
+        AddData("branch", branchId)
+    End Sub
+#End Region
+
+#Region "Close"
+    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
+        Application.Exit()
+    End Sub
+#End Region
+
+#Region "Navigation"
+    Private Sub InventoryButton_Click(sender As Object, e As EventArgs) Handles inventoryButton.Click
+        inventoryPanel.Visible = True
+        branchPanel.Visible = False
+    End Sub
+
+    Private Sub BranchButton_Click(sender As Object, e As EventArgs) Handles branchButton.Click
+        inventoryPanel.Visible = False
+        branchPanel.Visible = True
+    End Sub
+#End Region
+
+#End Region
+
 End Class
