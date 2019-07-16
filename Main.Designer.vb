@@ -24,10 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.inventoryButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.branchButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.navigationPanel = New System.Windows.Forms.Panel()
@@ -35,6 +35,7 @@ Partial Class Main
         Me.closeButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.inventoryPanel = New System.Windows.Forms.Panel()
+        Me.inventorySearchButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.branchComboBox = New System.Windows.Forms.ComboBox()
         Me.inventorySearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
@@ -70,7 +71,6 @@ Partial Class Main
         Me.InventoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BranchTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter()
         Me.InventoryTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter()
-        Me.inventorySearchButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.navigationPanel.SuspendLayout()
         CType(Me.logoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mainPanel.SuspendLayout()
@@ -247,6 +247,40 @@ Partial Class Main
         Me.inventoryPanel.Size = New System.Drawing.Size(1136, 768)
         Me.inventoryPanel.TabIndex = 1
         '
+        'inventorySearchButton
+        '
+        Me.inventorySearchButton.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.inventorySearchButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.inventorySearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.inventorySearchButton.BorderRadius = 0
+        Me.inventorySearchButton.ButtonText = "Search"
+        Me.inventorySearchButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.inventorySearchButton.DisabledColor = System.Drawing.Color.Gray
+        Me.inventorySearchButton.Iconcolor = System.Drawing.Color.Transparent
+        Me.inventorySearchButton.Iconimage = CType(resources.GetObject("inventorySearchButton.Iconimage"), System.Drawing.Image)
+        Me.inventorySearchButton.Iconimage_right = Nothing
+        Me.inventorySearchButton.Iconimage_right_Selected = Nothing
+        Me.inventorySearchButton.Iconimage_Selected = Nothing
+        Me.inventorySearchButton.IconMarginLeft = 0
+        Me.inventorySearchButton.IconMarginRight = 0
+        Me.inventorySearchButton.IconRightVisible = False
+        Me.inventorySearchButton.IconRightZoom = 0R
+        Me.inventorySearchButton.IconVisible = False
+        Me.inventorySearchButton.IconZoom = 90.0R
+        Me.inventorySearchButton.IsTab = False
+        Me.inventorySearchButton.Location = New System.Drawing.Point(562, 234)
+        Me.inventorySearchButton.Name = "inventorySearchButton"
+        Me.inventorySearchButton.Normalcolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.inventorySearchButton.OnHovercolor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(77, Byte), Integer))
+        Me.inventorySearchButton.OnHoverTextColor = System.Drawing.Color.White
+        Me.inventorySearchButton.selected = False
+        Me.inventorySearchButton.Size = New System.Drawing.Size(135, 42)
+        Me.inventorySearchButton.TabIndex = 19
+        Me.inventorySearchButton.Text = "Search"
+        Me.inventorySearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.inventorySearchButton.Textcolor = System.Drawing.Color.White
+        Me.inventorySearchButton.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -308,19 +342,19 @@ Partial Class Main
         '
         Me.inventoryDataGridView.AllowUserToAddRows = False
         Me.inventoryDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.inventoryDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.inventoryDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.inventoryDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.inventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.inventoryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.inventoryDataGridView.DoubleBuffered = True
@@ -757,19 +791,19 @@ Partial Class Main
         '
         Me.branchDataGridView.AllowUserToAddRows = False
         Me.branchDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.branchDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.branchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.branchDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.branchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.branchDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.branchDataGridView.DoubleBuffered = True
@@ -836,40 +870,6 @@ Partial Class Main
         'InventoryTableAdapter
         '
         Me.InventoryTableAdapter.ClearBeforeFill = True
-        '
-        'inventorySearchButton
-        '
-        Me.inventorySearchButton.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.inventorySearchButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.inventorySearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.inventorySearchButton.BorderRadius = 0
-        Me.inventorySearchButton.ButtonText = "Search"
-        Me.inventorySearchButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.inventorySearchButton.DisabledColor = System.Drawing.Color.Gray
-        Me.inventorySearchButton.Iconcolor = System.Drawing.Color.Transparent
-        Me.inventorySearchButton.Iconimage = CType(resources.GetObject("inventorySearchButton.Iconimage"), System.Drawing.Image)
-        Me.inventorySearchButton.Iconimage_right = Nothing
-        Me.inventorySearchButton.Iconimage_right_Selected = Nothing
-        Me.inventorySearchButton.Iconimage_Selected = Nothing
-        Me.inventorySearchButton.IconMarginLeft = 0
-        Me.inventorySearchButton.IconMarginRight = 0
-        Me.inventorySearchButton.IconRightVisible = False
-        Me.inventorySearchButton.IconRightZoom = 0R
-        Me.inventorySearchButton.IconVisible = False
-        Me.inventorySearchButton.IconZoom = 90.0R
-        Me.inventorySearchButton.IsTab = False
-        Me.inventorySearchButton.Location = New System.Drawing.Point(562, 234)
-        Me.inventorySearchButton.Name = "inventorySearchButton"
-        Me.inventorySearchButton.Normalcolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.inventorySearchButton.OnHovercolor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(77, Byte), Integer))
-        Me.inventorySearchButton.OnHoverTextColor = System.Drawing.Color.White
-        Me.inventorySearchButton.selected = False
-        Me.inventorySearchButton.Size = New System.Drawing.Size(135, 42)
-        Me.inventorySearchButton.TabIndex = 19
-        Me.inventorySearchButton.Text = "Search"
-        Me.inventorySearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.inventorySearchButton.Textcolor = System.Drawing.Color.White
-        Me.inventorySearchButton.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         '
         'Main
         '

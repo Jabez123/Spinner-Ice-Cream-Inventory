@@ -8,6 +8,7 @@ Public Class Main
     Dim branchId As Integer
     Dim selectedBranchId As Integer
     Dim selectedBranch As String
+    Dim todaysDate As String
 
     Private Sub ClearValues(panel As String)
         If panel = "inventory" Then
@@ -33,6 +34,27 @@ Public Class Main
         DisplayData("inventory", "branch")
         DisplayData("branch", "branch")
         LoadInComboBox()
+        GetDateToday()
+        CheckDateToday()
+    End Sub
+
+    Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        My.Settings.PreviousDate = todaysDate
+        My.Settings.Save()
+    End Sub
+
+    Private Sub GetDateToday()
+        todaysDate = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
+        Console.WriteLine(todaysDate)
+        Console.WriteLine(My.Settings.PreviousDate)
+    End Sub
+
+    Private Sub CheckDateToday()
+        If todaysDate <> My.Settings.PreviousDate Then
+            Console.WriteLine("Date is not match")
+        Else
+            Console.WriteLine("Date is match")
+        End If
     End Sub
 
 #Region "Database Related"
@@ -440,6 +462,8 @@ Public Class Main
         inventoryPanel.Visible = False
         branchPanel.Visible = True
     End Sub
+
+
 #End Region
 
 #End Region

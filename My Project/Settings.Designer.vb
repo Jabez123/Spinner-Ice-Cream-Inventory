@@ -64,6 +64,18 @@ Namespace My
                 Return CType(Me("Spinner_Inventory_DbConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PreviousDate() As String
+            Get
+                Return CType(Me("PreviousDate"),String)
+            End Get
+            Set
+                Me("PreviousDate") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
