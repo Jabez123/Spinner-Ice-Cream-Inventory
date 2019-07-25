@@ -595,6 +595,25 @@ Public Class Main
         branchPanel.Visible = True
     End Sub
 
+
+
+#End Region
+
+#Region "Refresh"
+    Private Sub RefreshBranchButton_Click(sender As Object, e As EventArgs) Handles refreshBranchButton.Click
+        DisplayData("branch", "branch")
+        LoadInComboBox()
+        ClearValues("branch")
+        branchSearchTextBox.Text = ""
+    End Sub
+
+    Private Sub RefreshInventoryButton_Click(sender As Object, e As EventArgs) Handles refreshInventoryButton.Click
+        DisplayData("inventory", "branch")
+        ClearValues("inventory")
+        inventorySearchTextBox.Text = ""
+    End Sub
+
+
 #End Region
 
 #End Region
