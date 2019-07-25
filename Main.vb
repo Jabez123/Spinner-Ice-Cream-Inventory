@@ -53,6 +53,15 @@ Public Class Main
     Private Sub CheckDateToday()
         If todaysDate <> My.Settings.PreviousDate Then
             Console.WriteLine("Date is not match")
+
+            cmd = con.CreateCommand()
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "UPDATE inventory 
+            SET
+            inventory_beginning = inventory_ending;"
+            cmd.ExecuteNonQuery()
+
+            DisplayData("inventory", "branch")
         Else
             Console.WriteLine("Date is match")
         End If
@@ -77,9 +86,11 @@ Public Class Main
         Int32.TryParse(_inventoryEnding, inventoryEnding)
         Int32.TryParse(_usage, usage)
 
-        inventoryEnding = inventoryBeginning + quantity + transferIn - transferOut - wastage - usage
+        inventoryEnding = inventoryBeginning - quantity + transferIn - transferOut - wastage - usage
 
         totalInventory = inventoryEnding
+
+        inventoryEndingTextBox.Text = inventoryEnding
 
         Console.WriteLine(totalInventory)
     End Sub
