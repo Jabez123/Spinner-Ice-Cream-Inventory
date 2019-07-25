@@ -10,6 +10,7 @@ Public Class Main
     Dim selectedBranch As String
     Dim todaysDate As String
     Dim totalInventory As Integer
+    Dim totalPrice As Integer
 
     Private Sub ClearValues(panel As String)
         If panel = "inventory" Then
@@ -90,10 +91,78 @@ Public Class Main
 
         totalInventory = inventoryEnding
 
-        inventoryEndingTextBox.Text = inventoryEnding
+        inventoryEndingTextBox.Text = totalInventory
 
-        Console.WriteLine(totalInventory)
     End Sub
+
+    Private Sub ComputePrice(_price As String, _quantity As String)
+        Dim price As Integer
+        Dim quantity As Integer
+
+        Int32.TryParse(_price, price)
+        Int32.TryParse(_quantity, quantity)
+
+        totalPrice = price * quantity
+
+        totalPriceTextBox.Text = totalPrice
+
+    End Sub
+
+#Region "On Value Change"
+    Private Sub InventoryBeginningTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles inventoryBeginningTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub PriceTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles priceTextBox.OnValueChanged
+        ComputePrice(priceTextBox.Text, quantityTextBox.Text)
+    End Sub
+
+    Private Sub TransferOutTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles transferOutTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub InventoryEndingTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles inventoryEndingTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub QuantityTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles quantityTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+        ComputePrice(priceTextBox.Text, quantityTextBox.Text)
+    End Sub
+
+    Private Sub TransferInTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles transferInTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub WastageTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles wastageTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+
+    Private Sub UsageTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles usageTextBox.OnValueChanged
+        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
+                        transferInTextBox.Text, transferOutTextBox.Text,
+                        wastageTextBox.Text, inventoryEndingTextBox.Text,
+                        usageTextBox.Text)
+    End Sub
+#End Region
 
 #Region "Database Related"
 
@@ -454,33 +523,58 @@ Public Class Main
 
 #Region "Delete"
     Private Sub DeleteInventoryButton_Click(sender As Object, e As EventArgs) Handles deleteInventoryButton.Click
-        DeleteData("inventory", selectedInventoryId)
+        If selectedInventoryId > 0 Then
+            DeleteData("inventory", selectedInventoryId)
+        Else
+            MessageBox.Show("Please select a row first.")
+        End If
     End Sub
 
     Private Sub DeleteBranchTextBox_Click(sender As Object, e As EventArgs) Handles DeleteBranchTextBox.Click
-        DeleteData("branch", selectedBranchId)
+        If selectedInventoryId > 0 Then
+            DeleteData("branch", selectedBranchId)
+        Else
+            MessageBox.Show("Please select a row first.")
+        End If
     End Sub
 #End Region
 
 #Region "Edit"
     Private Sub EditInventoryButton_Click(sender As Object, e As EventArgs) Handles editInventoryButton.Click
-        EditData("inventory", selectedInventoryId, branchId)
+        If selectedInventoryId > 0 Then
+            EditData("inventory", selectedInventoryId, branchId)
+        Else
+            MessageBox.Show("Please select a row first.")
+        End If
     End Sub
 
     Private Sub EditBranchTextBox_Click(sender As Object, e As EventArgs) Handles EditBranchTextBox.Click
         If selectedBranchId > 0 Then
             EditData("branch", selectedBranchId, branchId)
+        Else
+            MessageBox.Show("Please select a row first.")
         End If
     End Sub
 #End Region
 
 #Region "Add"
     Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
-        AddData("inventory", branchId)
+        If descriptionTextBox.Text <> "" And unitTextBox.Text <> "" And branchComboBox.SelectedIndex = -1 And inventoryBeginningTextBox.Text <> "" And
+           quantityTextBox.Text <> "" And priceTextBox.Text <> "" And transferInTextBox.Text <> "" And
+           transferOutTextBox.Text <> "" And wastageTextBox.Text <> "" And usageTextBox.Text <> "" Then
+            AddData("branch", branchId)
+        Else
+            MessageBox.Show("Enter a value first.")
+        End If
     End Sub
 
     Private Sub AddBranchButton_Click(sender As Object, e As EventArgs) Handles addBranchButton.Click
-        AddData("branch", branchId)
+
+        If nameTextBox.Text <> "" Then
+            AddData("branch", branchId)
+        Else
+            MessageBox.Show("Enter a value first.")
+        End If
     End Sub
 #End Region
 
@@ -500,63 +594,6 @@ Public Class Main
         inventoryPanel.Visible = False
         branchPanel.Visible = True
     End Sub
-
-    Private Sub InventoryBeginningTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles inventoryBeginningTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub PriceTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles priceTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub TransferOutTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles transferOutTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub InventoryEndingTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles inventoryEndingTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub QuantityTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles quantityTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub TransferInTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles transferInTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub WastageTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles wastageTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
-    Private Sub UsageTextBox_OnValueChanged(sender As Object, e As EventArgs) Handles usageTextBox.OnValueChanged
-        ComputeInventory(inventoryBeginningTextBox.Text, quantityTextBox.Text,
-                        transferInTextBox.Text, transferOutTextBox.Text,
-                        wastageTextBox.Text, inventoryEndingTextBox.Text,
-                        usageTextBox.Text)
-    End Sub
-
 
 #End Region
 
