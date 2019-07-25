@@ -16,6 +16,7 @@ Public Class Main
         If panel = "inventory" Then
             descriptionTextBox.Text = ""
             unitTextBox.Text = ""
+            categoryTextBox.Text = ""
             branchComboBox.SelectedIndex = -1
             inventoryBeginningTextBox.Text = ""
             quantityTextBox.Text = ""
@@ -199,12 +200,14 @@ Public Class Main
     End Sub
 
     Private Sub DisplayData(table As String, join As String)
+        Connect()
+
         If table = "inventory" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
-                                inventory.description AS 'Description', inventory.unit AS 'Unit', 
-                                inventory.inventory_beginning AS 'Inventory Beginning', 
+                                inventory.description AS 'Description', inventory.category AS 'Category',
+                                inventory.unit AS 'Unit', inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
                                 inventory.transfer_in as 'Transfer In', 
                                 inventory.transfer_out as 'Transfer Out',
@@ -250,11 +253,11 @@ Public Class Main
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "INSERT INTO " & table & "
-            (branch_id, description, unit, inventory_beginning, quantity, 
+            (branch_id, description, unit, category, inventory_beginning, quantity, 
             price, transfer_in, transfer_out, wastage, inventory_ending, 
             usage, remarks) values(
             '" & branchId.ToString() & "', '" & descriptionTextBox.Text & "', 
-            '" & unitTextBox.Text & "', '" & inventoryBeginningTextBox.Text & "',
+            '" & unitTextBox.Text & "', '" & categoryTextBox.Text & "', '" & inventoryBeginningTextBox.Text & "',
             '" & quantityTextBox.Text & "', '" & priceTextBox.Text & "',
             '" & transferInTextBox.Text & "', '" & transferOutTextBox.Text & "',
             '" & wastageTextBox.Text & "', '" & inventoryEndingTextBox.Text & "',
@@ -292,6 +295,7 @@ Public Class Main
             SET branch_id ='" & branchId.ToString() & "', 
             description = '" & descriptionTextBox.Text & "',
             unit = '" & unitTextBox.Text & "',
+            category = '" & categoryTextBox.Text & "',
             inventory_beginning = '" & inventoryBeginningTextBox.Text & "',
             quantity = '" & quantityTextBox.Text & "',
             price = '" & priceTextBox.Text & "',
@@ -350,15 +354,14 @@ Public Class Main
     End Sub
 #End Region
 
-
 #Region "Search Data"
     Private Sub SearchData(table As String, searchTextBox As String, join As String)
         If table = "inventory" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
-                                inventory.description AS 'Description', inventory.unit AS 'Unit', 
-                                inventory.inventory_beginning AS 'Inventory Beginning', 
+                                inventory.description AS 'Description', inventory.category AS 'Category',
+                                inventory.unit AS 'Unit', inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
                                 inventory.transfer_in as 'Transfer In', 
                                 inventory.transfer_out as 'Transfer Out',
@@ -369,7 +372,7 @@ Public Class Main
                                 from " & table & "
                                 inner Join " & join & " 
                                 On inventory.branch_id = branch.id where inventory.description LIKE '%" & searchTextBox & "%' OR
-                                branch.branch_name LIKE '%" & searchTextBox & "%';"
+                                branch.branch_name LIKE '%" & searchTextBox & "%' OR inventory.category LIKE '%" & searchTextBox & "%';"
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable
@@ -559,7 +562,7 @@ Public Class Main
 
 #Region "Add"
     Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
-        If descriptionTextBox.Text <> "" And unitTextBox.Text <> "" And branchComboBox.SelectedIndex = -1 And inventoryBeginningTextBox.Text <> "" And
+        If descriptionTextBox.Text <> "" And categoryTextBox.Text <> "" And unitTextBox.Text <> "" And branchComboBox.SelectedIndex = -1 And inventoryBeginningTextBox.Text <> "" And
            quantityTextBox.Text <> "" And priceTextBox.Text <> "" And transferInTextBox.Text <> "" And
            transferOutTextBox.Text <> "" And wastageTextBox.Text <> "" And usageTextBox.Text <> "" Then
             AddData("branch", branchId)
