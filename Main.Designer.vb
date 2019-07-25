@@ -24,10 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.inventoryButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.branchButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.navigationPanel = New System.Windows.Forms.Panel()
@@ -35,6 +35,11 @@ Partial Class Main
         Me.closeButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.inventoryPanel = New System.Windows.Forms.Panel()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.categoryTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.refreshInventoryButton = New Bunifu.Framework.UI.BunifuTileButton()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.totalPriceTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -67,6 +72,7 @@ Partial Class Main
         Me.descriptionTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.inventoryLabel = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.branchPanel = New System.Windows.Forms.Panel()
+        Me.refreshBranchButton = New Bunifu.Framework.UI.BunifuTileButton()
         Me.branchSearchButton = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.branchSearchTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.DeleteBranchTextBox = New Bunifu.Framework.UI.BunifuTileButton()
@@ -81,12 +87,8 @@ Partial Class Main
         Me.InventoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BranchTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.branchTableAdapter()
         Me.InventoryTableAdapter = New Spinner_Ice_Cream_Inventory.Spinner_Inventory_DbDataSetTableAdapters.inventoryTableAdapter()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.totalPriceTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.refreshInventoryButton = New Bunifu.Framework.UI.BunifuTileButton()
-        Me.refreshBranchButton = New Bunifu.Framework.UI.BunifuTileButton()
-        Me.categoryTextBox = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.inventoryDatePicker = New Bunifu.Framework.UI.BunifuDatepicker()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.navigationPanel.SuspendLayout()
         CType(Me.logoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mainPanel.SuspendLayout()
@@ -237,6 +239,8 @@ Partial Class Main
         '
         'inventoryPanel
         '
+        Me.inventoryPanel.Controls.Add(Me.Label14)
+        Me.inventoryPanel.Controls.Add(Me.inventoryDatePicker)
         Me.inventoryPanel.Controls.Add(Me.Label13)
         Me.inventoryPanel.Controls.Add(Me.categoryTextBox)
         Me.inventoryPanel.Controls.Add(Me.refreshInventoryButton)
@@ -277,6 +281,84 @@ Partial Class Main
         Me.inventoryPanel.Name = "inventoryPanel"
         Me.inventoryPanel.Size = New System.Drawing.Size(1136, 768)
         Me.inventoryPanel.TabIndex = 1
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(296, 76)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(64, 17)
+        Me.Label13.TabIndex = 58
+        Me.Label13.Text = "Category"
+        '
+        'categoryTextBox
+        '
+        Me.categoryTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.categoryTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.categoryTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.categoryTextBox.HintForeColor = System.Drawing.Color.Empty
+        Me.categoryTextBox.HintText = "Category"
+        Me.categoryTextBox.isPassword = False
+        Me.categoryTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
+        Me.categoryTextBox.LineIdleColor = System.Drawing.Color.Gray
+        Me.categoryTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
+        Me.categoryTextBox.LineThickness = 3
+        Me.categoryTextBox.Location = New System.Drawing.Point(297, 84)
+        Me.categoryTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.categoryTextBox.Name = "categoryTextBox"
+        Me.categoryTextBox.Size = New System.Drawing.Size(190, 44)
+        Me.categoryTextBox.TabIndex = 6
+        Me.categoryTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'refreshInventoryButton
+        '
+        Me.refreshInventoryButton.BackColor = System.Drawing.Color.SeaGreen
+        Me.refreshInventoryButton.color = System.Drawing.Color.SeaGreen
+        Me.refreshInventoryButton.colorActive = System.Drawing.Color.MediumSeaGreen
+        Me.refreshInventoryButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.refreshInventoryButton.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.refreshInventoryButton.ForeColor = System.Drawing.Color.White
+        Me.refreshInventoryButton.Image = CType(resources.GetObject("refreshInventoryButton.Image"), System.Drawing.Image)
+        Me.refreshInventoryButton.ImagePosition = 3
+        Me.refreshInventoryButton.ImageZoom = 40
+        Me.refreshInventoryButton.LabelPosition = 30
+        Me.refreshInventoryButton.LabelText = "Refresh"
+        Me.refreshInventoryButton.Location = New System.Drawing.Point(1007, 262)
+        Me.refreshInventoryButton.Margin = New System.Windows.Forms.Padding(5)
+        Me.refreshInventoryButton.Name = "refreshInventoryButton"
+        Me.refreshInventoryButton.Size = New System.Drawing.Size(86, 58)
+        Me.refreshInventoryButton.TabIndex = 22
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(579, 76)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(70, 17)
+        Me.Label12.TabIndex = 55
+        Me.Label12.Text = "Total Price"
+        '
+        'totalPriceTextBox
+        '
+        Me.totalPriceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.totalPriceTextBox.Enabled = False
+        Me.totalPriceTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.totalPriceTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.totalPriceTextBox.HintForeColor = System.Drawing.Color.Empty
+        Me.totalPriceTextBox.HintText = "Total Price"
+        Me.totalPriceTextBox.isPassword = False
+        Me.totalPriceTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
+        Me.totalPriceTextBox.LineIdleColor = System.Drawing.Color.Gray
+        Me.totalPriceTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
+        Me.totalPriceTextBox.LineThickness = 3
+        Me.totalPriceTextBox.Location = New System.Drawing.Point(582, 84)
+        Me.totalPriceTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.totalPriceTextBox.Name = "totalPriceTextBox"
+        Me.totalPriceTextBox.Size = New System.Drawing.Size(99, 44)
+        Me.totalPriceTextBox.TabIndex = 10
+        Me.totalPriceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Label11
         '
@@ -441,7 +523,7 @@ Partial Class Main
         Me.inventorySearchTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.inventorySearchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.inventorySearchTextBox.HintForeColor = System.Drawing.Color.Empty
-        Me.inventorySearchTextBox.HintText = "Search by description, branch name or category"
+        Me.inventorySearchTextBox.HintText = "Search by description, date, branch name or category"
         Me.inventorySearchTextBox.isPassword = False
         Me.inventorySearchTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
         Me.inventorySearchTextBox.LineIdleColor = System.Drawing.Color.Gray
@@ -473,19 +555,19 @@ Partial Class Main
         '
         Me.inventoryDataGridView.AllowUserToAddRows = False
         Me.inventoryDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.inventoryDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
         Me.inventoryDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.inventoryDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.inventoryDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle26.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle26.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.inventoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.inventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.inventoryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.inventoryDataGridView.DoubleBuffered = True
@@ -515,7 +597,7 @@ Partial Class Main
         Me.remarksTextBox.Location = New System.Drawing.Point(493, 209)
         Me.remarksTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.remarksTextBox.Name = "remarksTextBox"
-        Me.remarksTextBox.Size = New System.Drawing.Size(580, 44)
+        Me.remarksTextBox.Size = New System.Drawing.Size(384, 44)
         Me.remarksTextBox.TabIndex = 16
         Me.remarksTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -795,6 +877,25 @@ Partial Class Main
         Me.branchPanel.TabIndex = 1
         Me.branchPanel.Visible = False
         '
+        'refreshBranchButton
+        '
+        Me.refreshBranchButton.BackColor = System.Drawing.Color.SeaGreen
+        Me.refreshBranchButton.color = System.Drawing.Color.SeaGreen
+        Me.refreshBranchButton.colorActive = System.Drawing.Color.MediumSeaGreen
+        Me.refreshBranchButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.refreshBranchButton.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.refreshBranchButton.ForeColor = System.Drawing.Color.White
+        Me.refreshBranchButton.Image = CType(resources.GetObject("refreshBranchButton.Image"), System.Drawing.Image)
+        Me.refreshBranchButton.ImagePosition = 10
+        Me.refreshBranchButton.ImageZoom = 40
+        Me.refreshBranchButton.LabelPosition = 41
+        Me.refreshBranchButton.LabelText = "Refresh"
+        Me.refreshBranchButton.Location = New System.Drawing.Point(306, 103)
+        Me.refreshBranchButton.Margin = New System.Windows.Forms.Padding(5)
+        Me.refreshBranchButton.Name = "refreshBranchButton"
+        Me.refreshBranchButton.Size = New System.Drawing.Size(85, 75)
+        Me.refreshBranchButton.TabIndex = 28
+        '
         'branchSearchButton
         '
         Me.branchSearchButton.Activecolor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(87, Byte), Integer))
@@ -924,19 +1025,19 @@ Partial Class Main
         '
         Me.branchDataGridView.AllowUserToAddRows = False
         Me.branchDataGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.branchDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
         Me.branchDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.branchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.branchDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.branchDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle28
         Me.branchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.branchDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.branchDataGridView.DoubleBuffered = True
@@ -1004,102 +1105,28 @@ Partial Class Main
         '
         Me.InventoryTableAdapter.ClearBeforeFill = True
         '
-        'Label12
+        'inventoryDatePicker
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(579, 76)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(70, 17)
-        Me.Label12.TabIndex = 55
-        Me.Label12.Text = "Total Price"
+        Me.inventoryDatePicker.BackColor = System.Drawing.Color.SeaGreen
+        Me.inventoryDatePicker.BorderRadius = 0
+        Me.inventoryDatePicker.ForeColor = System.Drawing.Color.White
+        Me.inventoryDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.inventoryDatePicker.FormatCustom = "dd/MM/yyyy"
+        Me.inventoryDatePicker.Location = New System.Drawing.Point(887, 225)
+        Me.inventoryDatePicker.Name = "inventoryDatePicker"
+        Me.inventoryDatePicker.Size = New System.Drawing.Size(186, 29)
+        Me.inventoryDatePicker.TabIndex = 59
+        Me.inventoryDatePicker.Value = New Date(2019, 7, 25, 18, 3, 49, 0)
         '
-        'totalPriceTextBox
+        'Label14
         '
-        Me.totalPriceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.totalPriceTextBox.Enabled = False
-        Me.totalPriceTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.totalPriceTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.totalPriceTextBox.HintForeColor = System.Drawing.Color.Empty
-        Me.totalPriceTextBox.HintText = "Total Price"
-        Me.totalPriceTextBox.isPassword = False
-        Me.totalPriceTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
-        Me.totalPriceTextBox.LineIdleColor = System.Drawing.Color.Gray
-        Me.totalPriceTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
-        Me.totalPriceTextBox.LineThickness = 3
-        Me.totalPriceTextBox.Location = New System.Drawing.Point(582, 84)
-        Me.totalPriceTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.totalPriceTextBox.Name = "totalPriceTextBox"
-        Me.totalPriceTextBox.Size = New System.Drawing.Size(99, 44)
-        Me.totalPriceTextBox.TabIndex = 10
-        Me.totalPriceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'refreshInventoryButton
-        '
-        Me.refreshInventoryButton.BackColor = System.Drawing.Color.SeaGreen
-        Me.refreshInventoryButton.color = System.Drawing.Color.SeaGreen
-        Me.refreshInventoryButton.colorActive = System.Drawing.Color.MediumSeaGreen
-        Me.refreshInventoryButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.refreshInventoryButton.Font = New System.Drawing.Font("Century Gothic", 15.75!)
-        Me.refreshInventoryButton.ForeColor = System.Drawing.Color.White
-        Me.refreshInventoryButton.Image = CType(resources.GetObject("refreshInventoryButton.Image"), System.Drawing.Image)
-        Me.refreshInventoryButton.ImagePosition = 3
-        Me.refreshInventoryButton.ImageZoom = 40
-        Me.refreshInventoryButton.LabelPosition = 30
-        Me.refreshInventoryButton.LabelText = "Refresh"
-        Me.refreshInventoryButton.Location = New System.Drawing.Point(1007, 262)
-        Me.refreshInventoryButton.Margin = New System.Windows.Forms.Padding(5)
-        Me.refreshInventoryButton.Name = "refreshInventoryButton"
-        Me.refreshInventoryButton.Size = New System.Drawing.Size(86, 58)
-        Me.refreshInventoryButton.TabIndex = 22
-        '
-        'refreshBranchButton
-        '
-        Me.refreshBranchButton.BackColor = System.Drawing.Color.SeaGreen
-        Me.refreshBranchButton.color = System.Drawing.Color.SeaGreen
-        Me.refreshBranchButton.colorActive = System.Drawing.Color.MediumSeaGreen
-        Me.refreshBranchButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.refreshBranchButton.Font = New System.Drawing.Font("Century Gothic", 15.75!)
-        Me.refreshBranchButton.ForeColor = System.Drawing.Color.White
-        Me.refreshBranchButton.Image = CType(resources.GetObject("refreshBranchButton.Image"), System.Drawing.Image)
-        Me.refreshBranchButton.ImagePosition = 10
-        Me.refreshBranchButton.ImageZoom = 40
-        Me.refreshBranchButton.LabelPosition = 41
-        Me.refreshBranchButton.LabelText = "Refresh"
-        Me.refreshBranchButton.Location = New System.Drawing.Point(306, 103)
-        Me.refreshBranchButton.Margin = New System.Windows.Forms.Padding(5)
-        Me.refreshBranchButton.Name = "refreshBranchButton"
-        Me.refreshBranchButton.Size = New System.Drawing.Size(85, 75)
-        Me.refreshBranchButton.TabIndex = 28
-        '
-        'categoryTextBox
-        '
-        Me.categoryTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.categoryTextBox.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.categoryTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.categoryTextBox.HintForeColor = System.Drawing.Color.Empty
-        Me.categoryTextBox.HintText = "Category"
-        Me.categoryTextBox.isPassword = False
-        Me.categoryTextBox.LineFocusedColor = System.Drawing.Color.SeaGreen
-        Me.categoryTextBox.LineIdleColor = System.Drawing.Color.Gray
-        Me.categoryTextBox.LineMouseHoverColor = System.Drawing.Color.SeaGreen
-        Me.categoryTextBox.LineThickness = 3
-        Me.categoryTextBox.Location = New System.Drawing.Point(297, 84)
-        Me.categoryTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.categoryTextBox.Name = "categoryTextBox"
-        Me.categoryTextBox.Size = New System.Drawing.Size(190, 44)
-        Me.categoryTextBox.TabIndex = 6
-        Me.categoryTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(296, 76)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(64, 17)
-        Me.Label13.TabIndex = 58
-        Me.Label13.Text = "Category"
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(884, 205)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(38, 17)
+        Me.Label14.TabIndex = 60
+        Me.Label14.Text = "Date"
         '
         'Main
         '
@@ -1189,4 +1216,6 @@ Partial Class Main
     Friend WithEvents refreshBranchButton As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents categoryTextBox As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents Label13 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents inventoryDatePicker As Bunifu.Framework.UI.BunifuDatepicker
 End Class

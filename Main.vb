@@ -206,6 +206,7 @@ Public Class Main
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
+                                inventory.inventory_date AS 'Date',
                                 inventory.description AS 'Description', inventory.category AS 'Category',
                                 inventory.unit AS 'Unit', inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
@@ -255,13 +256,13 @@ Public Class Main
             cmd.CommandText = "INSERT INTO " & table & "
             (branch_id, description, unit, category, inventory_beginning, quantity, 
             price, transfer_in, transfer_out, wastage, inventory_ending, 
-            usage, remarks) values(
+            usage, remarks, inventory_date) values(
             '" & branchId.ToString() & "', '" & descriptionTextBox.Text & "', 
             '" & unitTextBox.Text & "', '" & categoryTextBox.Text & "', '" & inventoryBeginningTextBox.Text & "',
             '" & quantityTextBox.Text & "', '" & priceTextBox.Text & "',
             '" & transferInTextBox.Text & "', '" & transferOutTextBox.Text & "',
             '" & wastageTextBox.Text & "', '" & inventoryEndingTextBox.Text & "',
-            '" & usageTextBox.Text & "', '" & remarksTextBox.Text & "')"
+            '" & usageTextBox.Text & "', '" & remarksTextBox.Text & "', '" & inventoryDatePicker.Value.ToString("dd/MM/yyyy") & "')"
 
             cmd.ExecuteNonQuery()
 
@@ -304,7 +305,8 @@ Public Class Main
             wastage = '" & wastageTextBox.Text & "', 
             inventory_ending = '" & inventoryEndingTextBox.Text & "',
             usage = '" & usageTextBox.Text & "',
-            remarks = '" & remarksTextBox.Text & "' WHERE id = '" & id.ToString() & "';"
+            remarks = '" & remarksTextBox.Text & "',
+            inventory_date = '" & inventoryDatePicker.Value.ToString("dd/MM/yyyy") & "' WHERE id = '" & id.ToString() & "';"
             cmd.ExecuteNonQuery()
 
             DisplayData("inventory", "branch")
@@ -360,6 +362,7 @@ Public Class Main
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
+                                inventory.inventory_date AS 'Date',
                                 inventory.description AS 'Description', inventory.category AS 'Category',
                                 inventory.unit AS 'Unit', inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
@@ -371,7 +374,8 @@ Public Class Main
                                 inventory.remarks as 'Remarks' 
                                 from " & table & "
                                 inner Join " & join & " 
-                                On inventory.branch_id = branch.id where inventory.description LIKE '%" & searchTextBox & "%' OR
+                                On inventory.branch_id = branch.id where inventory.description LIKE '%" & searchTextBox & "%' OR 
+                                inventory.inventory_date LIKE '%" & searchTextBox & "%' OR
                                 branch.branch_name LIKE '%" & searchTextBox & "%' OR inventory.category LIKE '%" & searchTextBox & "%';"
             cmd.ExecuteNonQuery()
 
@@ -475,6 +479,8 @@ Public Class Main
                 inventoryEndingTextBox.Text = dr.GetInt32(10).ToString()
                 usageTextBox.Text = dr.GetInt32(11).ToString()
                 remarksTextBox.Text = dr.GetString(12).ToString()
+                categoryTextBox.Text = dr.GetString(13).ToString()
+                inventoryDatePicker.Value = dr.GetString(14).ToString()
 
             End While
             con.Close()
@@ -562,12 +568,10 @@ Public Class Main
 
 #Region "Add"
     Private Sub AddInventoryButton_Click(sender As Object, e As EventArgs) Handles addInventoryButton.Click
-        If descriptionTextBox.Text <> "" And categoryTextBox.Text <> "" And unitTextBox.Text <> "" And branchComboBox.SelectedIndex = -1 And inventoryBeginningTextBox.Text <> "" And
-           quantityTextBox.Text <> "" And priceTextBox.Text <> "" And transferInTextBox.Text <> "" And
-           transferOutTextBox.Text <> "" And wastageTextBox.Text <> "" And usageTextBox.Text <> "" Then
-            AddData("branch", branchId)
-        Else
+        If descriptionTextBox.Text = "" And branchComboBox.SelectedText = "" Then
             MessageBox.Show("Enter a value first.")
+        Else
+            AddData("inventory", branchId)
         End If
     End Sub
 
@@ -614,6 +618,10 @@ Public Class Main
         DisplayData("inventory", "branch")
         ClearValues("inventory")
         inventorySearchTextBox.Text = ""
+    End Sub
+
+    Private Sub InventoryDatePicker_onValueChanged(sender As Object, e As EventArgs) Handles inventoryDatePicker.onValueChanged
+
     End Sub
 
 
