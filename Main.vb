@@ -34,11 +34,15 @@ Public Class Main
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Connection()
-        DisplayData("inventory", "branch")
-        DisplayData("branch", "branch")
         LoadInComboBox()
+        selectBranchComboBox.SelectedIndex = 0
+        DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
+        DisplayData("branch", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
         GetDateToday()
         CheckDateToday()
+
+        Console.WriteLine("Selected Branch: " & selectBranchComboBox.SelectedItem)
+        Console.WriteLine("Selected Date: " & selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
     End Sub
 
     Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -63,7 +67,7 @@ Public Class Main
             inventory_beginning = inventory_ending;"
             cmd.ExecuteNonQuery()
 
-            DisplayData("inventory", "branch")
+            DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
         Else
             Console.WriteLine("Date is match")
         End If
@@ -194,19 +198,19 @@ Public Class Main
 
         While dr.Read
             branchComboBox.Items.Add(dr("branch_name"))
+            selectBranchComboBox.Items.Add(dr("branch_name"))
         End While
 
         dr.Close()
     End Sub
 
-    Private Sub DisplayData(table As String, join As String)
+    Private Sub DisplayData(table As String, join As String, branch As String, selectDate As String)
         Connect()
 
         If table = "inventory" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
-                                inventory.inventory_date AS 'Date',
                                 inventory.description AS 'Description', inventory.category AS 'Category',
                                 inventory.unit AS 'Unit', inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
@@ -218,7 +222,8 @@ Public Class Main
                                 inventory.remarks as 'Remarks' 
                                 from " & table & "
                                 inner join " & join & " 
-                                on inventory.branch_id = branch.id;"
+                                on inventory.branch_id = branch.id
+                                WHERE branch.branch_name = '" & branch & "' AND inventory.inventory_date = '" & selectDate & "';"
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable
@@ -227,6 +232,7 @@ Public Class Main
 
             inventoryDataGridView.DataSource = dt
             inventoryDataGridView.Columns(0).Visible = False
+            inventoryDataGridView.Columns(1).Visible = False
         End If
 
         If table = "branch" Then
@@ -262,11 +268,11 @@ Public Class Main
             '" & quantityTextBox.Text & "', '" & priceTextBox.Text & "',
             '" & transferInTextBox.Text & "', '" & transferOutTextBox.Text & "',
             '" & wastageTextBox.Text & "', '" & inventoryEndingTextBox.Text & "',
-            '" & usageTextBox.Text & "', '" & remarksTextBox.Text & "', '" & inventoryDatePicker.Value.ToString("dd/MM/yyyy") & "')"
+            '" & usageTextBox.Text & "', '" & remarksTextBox.Text & "', '" & todaysDate & "')"
 
             cmd.ExecuteNonQuery()
 
-            DisplayData("inventory", "branch")
+            DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
             ClearValues("inventory")
         ElseIf table = "branch" Then
             cmd = con.CreateCommand()
@@ -275,7 +281,7 @@ Public Class Main
 
             cmd.ExecuteNonQuery()
 
-            DisplayData("branch", "branch")
+            DisplayData("branch", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
             LoadInComboBox()
             ClearValues("branch")
         End If
@@ -305,11 +311,10 @@ Public Class Main
             wastage = '" & wastageTextBox.Text & "', 
             inventory_ending = '" & inventoryEndingTextBox.Text & "',
             usage = '" & usageTextBox.Text & "',
-            remarks = '" & remarksTextBox.Text & "',
-            inventory_date = '" & inventoryDatePicker.Value.ToString("dd/MM/yyyy") & "' WHERE id = '" & id.ToString() & "';"
+            remarks = '" & remarksTextBox.Text & "' WHERE id = '" & id.ToString() & "';"
             cmd.ExecuteNonQuery()
 
-            DisplayData("inventory", "branch")
+            DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
             LoadInComboBox()
             ClearValues("inventory")
         End If
@@ -321,7 +326,7 @@ Public Class Main
             SET branch_name='" + nameTextBox.Text + "' WHERE id = " & id.ToString() & ""
             cmd.ExecuteNonQuery()
 
-            DisplayData("branch", "branch")
+            DisplayData("branch", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
             LoadInComboBox()
             ClearValues("branch")
         End If
@@ -338,7 +343,7 @@ Public Class Main
             cmd.CommandText = "DELETE FROM " & table & " WHERE id = " & id & ""
             cmd.ExecuteNonQuery()
 
-            DisplayData("inventory", "branch")
+            DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
             LoadInComboBox()
             ClearValues("inventory")
         End If
@@ -349,7 +354,7 @@ Public Class Main
             cmd.CommandText = "DELETE FROM " & table & " WHERE id = " & id & ""
             cmd.ExecuteNonQuery()
 
-            DisplayData("branch", "branch")
+            DisplayData("branch", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
             LoadInComboBox()
             ClearValues("branch")
         End If
@@ -357,12 +362,11 @@ Public Class Main
 #End Region
 
 #Region "Search Data"
-    Private Sub SearchData(table As String, searchTextBox As String, join As String)
+    Private Sub SearchData(table As String, searchTextBox As String, join As String, branch As String, selectDate As String)
         If table = "inventory" Then
             cmd = con.CreateCommand()
             cmd.CommandType = CommandType.Text
             cmd.CommandText = "select inventory.id as 'ID', branch.branch_name AS 'Branch Name',
-                                inventory.inventory_date AS 'Date',
                                 inventory.description AS 'Description', inventory.category AS 'Category',
                                 inventory.unit AS 'Unit', inventory.inventory_beginning AS 'Inventory Beginning', 
                                 inventory.quantity AS 'Qty', price as 'Price', 
@@ -373,10 +377,9 @@ Public Class Main
                                 inventory.usage as 'Usage', 
                                 inventory.remarks as 'Remarks' 
                                 from " & table & "
-                                inner Join " & join & " 
-                                On inventory.branch_id = branch.id where inventory.description LIKE '%" & searchTextBox & "%' OR 
-                                inventory.inventory_date LIKE '%" & searchTextBox & "%' OR
-                                branch.branch_name LIKE '%" & searchTextBox & "%' OR inventory.category LIKE '%" & searchTextBox & "%';"
+                                inner join " & join & " 
+                                on inventory.branch_id = branch.id where inventory.description LIKE '%" & searchTextBox & "%' AND branch.branch_name = '" & branch & "' AND inventory.inventory_date = '" & selectDate & "'
+                                OR inventory.category LIKE '%" & searchTextBox & "%' AND branch.branch_name = '" & branch & "' AND inventory.inventory_date = '" & selectDate & "';"
             cmd.ExecuteNonQuery()
 
             Dim dt As New DataTable
@@ -384,6 +387,8 @@ Public Class Main
             da.Fill(dt)
 
             inventoryDataGridView.DataSource = dt
+            inventoryDataGridView.Columns(0).Visible = False
+            inventoryDataGridView.Columns(1).Visible = False
         End If
 
         If table = "branch" Then
@@ -397,9 +402,11 @@ Public Class Main
             da.Fill(dt)
 
             branchDataGridView.DataSource = dt
+
         End If
     End Sub
 #End Region
+
 #End Region
 
 #Region "ComboBox"
@@ -480,7 +487,7 @@ Public Class Main
                 usageTextBox.Text = dr.GetInt32(11).ToString()
                 remarksTextBox.Text = dr.GetString(12).ToString()
                 categoryTextBox.Text = dr.GetString(13).ToString()
-                inventoryDatePicker.Value = dr.GetString(14).ToString()
+                selectInventoryDateDatePicker.Value = dr.GetString(14).ToString()
 
             End While
             con.Close()
@@ -522,11 +529,11 @@ Public Class Main
 
 #Region "Search"
     Private Sub InventorySearchButton_Click(sender As Object, e As EventArgs) Handles inventorySearchButton.Click
-        SearchData("inventory", inventorySearchTextBox.Text, "branch")
+        SearchData("inventory", inventorySearchTextBox.Text, "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
     End Sub
 
     Private Sub BranchSearchButton_Click(sender As Object, e As EventArgs) Handles branchSearchButton.Click
-        SearchData("branch", branchSearchTextBox.Text, "branch")
+        SearchData("inventory", inventorySearchTextBox.Text, "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
     End Sub
 #End Region
 
@@ -608,20 +615,28 @@ Public Class Main
 
 #Region "Refresh"
     Private Sub RefreshBranchButton_Click(sender As Object, e As EventArgs) Handles refreshBranchButton.Click
-        DisplayData("branch", "branch")
+        DisplayData("branch", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
         LoadInComboBox()
         ClearValues("branch")
         branchSearchTextBox.Text = ""
     End Sub
 
     Private Sub RefreshInventoryButton_Click(sender As Object, e As EventArgs) Handles refreshInventoryButton.Click
-        DisplayData("inventory", "branch")
+        DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
         ClearValues("inventory")
         inventorySearchTextBox.Text = ""
     End Sub
 
-    Private Sub InventoryDatePicker_onValueChanged(sender As Object, e As EventArgs) Handles inventoryDatePicker.onValueChanged
+    Private Sub SelectButton_Click(sender As Object, e As EventArgs) Handles selectButton.Click
+        DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
+    End Sub
 
+    Private Sub SelectBranchComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles selectBranchComboBox.SelectedIndexChanged
+        DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
+    End Sub
+
+    Private Sub SelectInventoryDateDatePicker_onValueChanged(sender As Object, e As EventArgs) 
+        DisplayData("inventory", "branch", selectBranchComboBox.SelectedItem, selectInventoryDateDatePicker.Value.ToString("dd/MM/yyyy"))
     End Sub
 
 
